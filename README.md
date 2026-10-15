@@ -4,7 +4,7 @@ Die Landingpage-Vorlagen, die vorher auf Landingi lagen. Sie sind als statisches
 
 - `index.html`: Übersicht aller Musterseiten
 - `<slug>/index.html` + `<slug>/assets/`: eine Musterseite. Jeder Ordner ist **in sich geschlossen** (CSS, JS, Bilder, Schriften liegen darin) und lässt sich 1:1 in ein eigenes Repo kopieren.
-- `seiten.json`: Liste der Seiten (Slug, Titel, Landingi-ID)
+- `seiten.json`: Liste der Seiten (Slug, Titel, Landingi-ID, dazu `style1_id` = inhaltlich geprüfte Style-1-Fassung als Referenz)
 - `scripts/klonen.mjs`: zieht eine Seite von Landingi und legt alles lokal ab
 - `scripts/korrigieren.mjs`: behebt Text-Überlappungen aus der Landingi-Vorlage (schreibt `<slug>/assets/css/korrekturen.css`)
 - `scripts/uebersicht.mjs`: erzeugt `index.html` aus `seiten.json`
