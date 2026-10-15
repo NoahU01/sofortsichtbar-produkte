@@ -1,0 +1,254 @@
+[
+  {
+    "punkt": "Berufseinsteiger: FAQ, 1. Frage (stammt von Ärzte)",
+    "seiten": [
+      "privat-berufseinsteiger"
+    ],
+    "alt": "Brauche ich als Arzt wirklich eine zusätzliche Absicherungsprüfung?",
+    "neu": "Brauche ich als Berufseinsteiger überhaupt schon Unterstützung bei Versicherungen?"
+  },
+  {
+    "punkt": "Digitale Nutzer: Problem-Überschrift (stammt von Berufseinsteiger)",
+    "seiten": [
+      "privat-digitale-nutzer"
+    ],
+    "alt": "<p>Der Start in das Berufsleben ist finanziell unübersichtlich</p>",
+    "neu": "<p>Cyberrisiken entstehen in ganz normalen Alltagssituationen</p>"
+  },
+  {
+    "punkt": "Tierhalter: Lösung, Überschrift (stammt von Werdende Eltern)",
+    "seiten": [
+      "privat-tierhalter"
+    ],
+    "alt": "<p>Ein strukturierter Check für klare Entscheidungen</p>",
+    "neu": "<p>Gut vorbereitet. Für alles, was kommt.</p>"
+  },
+  {
+    "punkt": "Tierhalter: Lösung, Text (stammt von Werdende Eltern)",
+    "seiten": [
+      "privat-tierhalter"
+    ],
+    "alt": "<p>Ein strukturierter Blick auf Ihre Situation bringt Ordnung. Sie erkennen, was jetzt wichtig ist. Und was warten kann. Verständlich. Alltagstauglich. Passend zu Ihrer Familiensituation.</p>",
+    "neu": "<p>Ein strukturierter Check hilft Ihnen, Ihre Situation besser zu verstehen. Sie erkennen mögliche Lücken und gewinnen Sicherheit für zukünftige Entscheidungen.</p>"
+  },
+  {
+    "punkt": "Tierhalter: Lösung, vier Punkte (stammt von Werdende Eltern)",
+    "seiten": [
+      "privat-tierhalter"
+    ],
+    "alt": "<ul><li>Klarheit über Ihre aktuelle Situation</li><li>Orientierung bei wichtigen Entscheidungen</li><li>Entlastung im Familienalltag</li><li>Einen klaren roten Faden</li></ul>",
+    "neu": "<ul><li>Übersicht über Ihre persönliche Risikosituation</li><li>Verständliche Einordnung ohne Fachbegriffe</li><li>Mehr Sicherheit bei Kosten und Haftung</li><li>Weniger Sorgen im Ernstfall</li></ul>"
+  },
+  {
+    "punkt": "Bauherren: Problem, Einleitungstext (stammt von Gründer)",
+    "seiten": [
+      "privat-bauherren"
+    ],
+    "alt": "Mit der Gründung endet die automatische Absicherung. Krankheit, Haftung oder Ausfall treffen Dich direkt. Ohne klare Prioritäten entstehen schnell Lücken oder unnötige Kosten.",
+    "neu": "Beim Hausbau treffen Sie laufend Entscheidungen mit langfristigen Folgen. Viele Risiken bleiben dabei unsichtbar. Diese Unsicherheit belastet und erschwert klare Entscheidungen."
+  },
+  {
+    "punkt": "Bauherren: Problem-Überschrift (stammt von Ärzte)",
+    "seiten": [
+      "privat-bauherren"
+    ],
+    "alt": "<p>Hohe Verantwortung, wenig Zeit für Absicherung</p>",
+    "neu": "<p>Viele Entscheidungen. Kaum Überblick.</p>"
+  },
+  {
+    "punkt": "Umzug: Problem, Einleitungstext (stammt von Tierhalter)",
+    "seiten": [
+      "privat-umzug"
+    ],
+    "alt": "Ein Unfall oder eine Krankheit kommt unerwartet. Viele Tierhalter erkennen erst dann, wie schnell hohe Kosten entstehen. Unsicherheit entsteht, wenn unklar bleibt, ob die Vorsorge wirklich passt.",
+    "neu": "Ein Wohnortwechsel bringt neue Verantwortung und viele Aufgaben. Versicherungen werden oft verschoben. Dadurch entstehen Unsicherheit und Kontrollverlust."
+  },
+  {
+    "punkt": "Angestellte (bAV): Ablauf, Schritt 1 (allgemeine Vorlage statt bAV)",
+    "seiten": [
+      "privat-angestellte"
+    ],
+    "alt": "Erstes Orientierungsgespräch",
+    "neu": "Klarheit in 30 Minuten"
+  },
+  {
+    "punkt": "Angestellte (bAV): Ablauf, Schritt 2 Überschrift",
+    "seiten": [
+      "privat-angestellte"
+    ],
+    "alt": "Ganzheitlicher Status-Check",
+    "neu": "Wir sprechen mit Ihrer Kommune"
+  },
+  {
+    "punkt": "Angestellte (bAV): Ablauf, Schritt 2 Text",
+    "seiten": [
+      "privat-angestellte"
+    ],
+    "alt": "Gemeinsam analysieren wir Ihre aktuelle Absicherungssituation. Dabei betrachten wir nicht nur Einzelverträge, sondern Ihre Gesamtsituation – ohne Schnellschüsse.",
+    "neu": "Wir übernehmen die Abstimmung mit Ihrer Kommune und klären alle organisatorischen Details. Sie müssen sich hierbei um nichts kümmern."
+  },
+  {
+    "punkt": "Angestellte (bAV): Ablauf, Schritt 3 Überschrift",
+    "seiten": [
+      "privat-angestellte"
+    ],
+    "alt": "Stärken &amp; Lücken verstehen",
+    "neu": "Einrichtung Ihrer bAV"
+  },
+  {
+    "punkt": "Angestellte (bAV): Ablauf, Schritt 3 Text",
+    "seiten": [
+      "privat-angestellte"
+    ],
+    "alt": "Sie erhalten eine verständliche Auswertung Ihrer Situation. Wir zeigen auf, welche Bausteine bereits gut aufgestellt sind und an welcher Stelle Absicherungsbedarf besteht.",
+    "neu": "Nachdem wir alle Themen geklärt haben, bekommen Sie Ihr Benefit-Paket mit doppeltem Hebel. Somit stellen Sie Ihre starke Rente sicher."
+  },
+  {
+    "punkt": "Ärzte: Problem, Einleitungstext (stammt von Gründer)",
+    "seiten": [
+      "gewerbe-aerzte"
+    ],
+    "alt": "Mit der Gründung endet die automatische Absicherung. Krankheit, Haftung oder Ausfall treffen Dich direkt. Ohne klare Prioritäten entstehen schnell Lücken oder unnötige Kosten.",
+    "neu": "Zwischen Praxis, Klinik und Familie bleibt kaum Zeit für Absicherung. Viele Entscheidungen entstehen unter Druck und bleiben ungeprüft. Das erzeugt Unsicherheit, obwohl Verlässlichkeit entscheidend ist."
+  },
+  {
+    "punkt": "Ärzte: FAQ „Lohnt sich das auch, wenn ich bereits gut verdiene?“ – Antwort doppelt (neue Antwort laut Vorschlag)",
+    "seiten": [
+      "gewerbe-aerzte"
+    ],
+    "alt": "id=\"XXswTkNxpV58Zm9SznygGzTIiBiWmBa0\" class=\"widget widget-text accordion-desc-text\"><span><p><span></span></p><p>Gerade dann ist er besonders wertvoll. Viele Risiken werden erst sichtbar, wenn etwas passiert ist. Ein vorausschauender Überblick schafft Sicherheit, bevor Zeitdruck entsteht. So treffen Sie Entscheidungen aus Ruhe, nicht aus Zwang.</p>",
+    "neu": "id=\"XXswTkNxpV58Zm9SznygGzTIiBiWmBa0\" class=\"widget widget-text accordion-desc-text\"><span><p><span></span></p><p>Ja. Mit dem Einkommen wachsen meist auch Lebensstandard und Verpflichtungen, etwa Praxisfinanzierung, Familie oder Immobilie. Gerade dann lohnt sich der Blick, ob Ihre Absicherung mit Ihrem Einkommen Schritt gehalten hat.</p>"
+  },
+  {
+    "punkt": "Landwirte: Problem, Einleitungstext (stammt von Gründer)",
+    "seiten": [
+      "gewerbe-landwirte"
+    ],
+    "alt": "Mit der Gründung endet die automatische Absicherung. Krankheit, Haftung oder Ausfall treffen Dich direkt. Ohne klare Prioritäten entstehen schnell Lücken oder unnötige Kosten.",
+    "neu": "Der Betrieb entwickelt sich weiter. Werte steigen. Abläufe werden komplexer. Absicherungen wachsen oft mit. Aber selten geplant. Lücken bleiben lange unbemerkt. Bis es ernst wird."
+  },
+  {
+    "punkt": "Immobilienmakler: Problem, Einleitungstext (stammt von Gründer)",
+    "seiten": [
+      "gewerbe-immomakler"
+    ],
+    "alt": "Mit der Gründung endet die automatische Absicherung. Krankheit, Haftung oder Ausfall treffen Dich direkt. Ohne klare Prioritäten entstehen schnell Lücken oder unnötige Kosten.",
+    "neu": "Haftungsfragen, Vorgaben und Zeitdruck gehören zu jedem Auftrag. Ohne klare Orientierung bleiben Risiken unbemerkt und werden erst sichtbar, wenn es zu spät ist."
+  },
+  {
+    "punkt": "Immobilienmakler: Problem-Überschrift (stammt von Ärzte)",
+    "seiten": [
+      "gewerbe-immomakler"
+    ],
+    "alt": "<p>Hohe Verantwortung, wenig Zeit für Absicherung</p>",
+    "neu": "<p>Ein kleiner Fehler. Große Folgen.</p>"
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Kontakt-Baustein duzt auf Sie-Seiten",
+    "seiten": "sie",
+    "alt": "Nimm Kontakt mit uns auf und kläre Deine Fragen in einem persönlichen und unverbindlichen Austausch.",
+    "neu": "Nehmen Sie Kontakt mit uns auf und klären Sie Ihre Fragen in einem persönlichen und unverbindlichen Austausch."
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Checkliste duzt auf Sie-Seiten",
+    "seiten": "sie",
+    "alt": "Checkliste mit Deinen Risiken",
+    "neu": "Checkliste mit Ihren Risiken"
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Podcast duzt auf Sie-Seiten",
+    "seiten": "sie",
+    "alt": "Dein Podcast für klare Antworten",
+    "neu": "Ihr Podcast für klare Antworten"
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: FAQ-Untertitel duzt auf Sie-Seiten",
+    "seiten": "sie",
+    "alt": "Bei weiteren Fragen kannst Du uns",
+    "neu": "Bei weiteren Fragen können Sie uns"
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Ablauf per Du auf Sie-Seiten (Überschrift)",
+    "seiten": "sie",
+    "alt": "So kommst Du zu mehr Klarheit",
+    "neu": "So kommen Sie zu mehr Klarheit",
+    "optional": true
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Ablauf per Du auf Sie-Seiten (Schritt 1)",
+    "seiten": "sie",
+    "alt": "klären wir Dein Anliegen",
+    "neu": "klären wir Ihr Anliegen",
+    "optional": true
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Ablauf per Du auf Sie-Seiten (Schritt 2)",
+    "seiten": "sie",
+    "alt": "Gemeinsam analysieren wir Deine aktuelle Absicherungssituation. Dabei betrachten wir nicht nur Einzelverträge, sondern Deine Gesamtsituation",
+    "neu": "Gemeinsam analysieren wir Ihre aktuelle Absicherungssituation. Dabei betrachten wir nicht nur Einzelverträge, sondern Ihre Gesamtsituation",
+    "optional": true
+  },
+  {
+    "punkt": "Nebenbefund Du/Sie: Ablauf per Du auf Sie-Seiten (Schritt 3)",
+    "seiten": "sie",
+    "alt": "Du erhältst eine verständliche Auswertung Deiner Situation.",
+    "neu": "Sie erhalten eine verständliche Auswertung Ihrer Situation.",
+    "optional": true
+  },
+  {
+    "punkt": "Nebenbefund Sie auf Du-Seite: Berufseinsteiger FAQ „Kostet mich ein Beratungsgespräch etwas?“",
+    "seiten": [
+      "privat-berufseinsteiger"
+    ],
+    "alt": "Wir lernen uns kennen und Sie erhalten Orientierung und Verständnis für Ihre Situation. Erst danach entscheiden Sie in Ruhe, ob und wie es weitergeht.",
+    "neu": "Wir lernen uns kennen und Du erhältst Orientierung und Verständnis für Deine Situation. Erst danach entscheidest Du in Ruhe, ob und wie es weitergeht."
+  },
+  {
+    "punkt": "Nebenbefund Sie auf Du-Seite: Berufseinsteiger FAQ „Ich habe kaum Zeit …“",
+    "seiten": [
+      "privat-berufseinsteiger"
+    ],
+    "alt": "Der Prozess ist darauf ausgelegt, Ihren Aufwand gering zu halten. Sie müssen sich nicht vorbereiten oder Fachwissen mitbringen. Ziel ist es, Ihnen Denk- und Entscheidungsarbeit abzunehmen.",
+    "neu": "Der Prozess ist darauf ausgelegt, Deinen Aufwand gering zu halten. Du musst Dich nicht vorbereiten oder Fachwissen mitbringen. Ziel ist es, Dir Denk- und Entscheidungsarbeit abzunehmen."
+  },
+  {
+    "punkt": "Nebenbefund Sie auf Du-Seite: Berufseinsteiger FAQ „Wird mir hier etwas verkauft …“",
+    "seiten": [
+      "privat-berufseinsteiger"
+    ],
+    "alt": "Sie behalten jederzeit die Kontrolle über Entscheidungen.",
+    "neu": "Du behältst jederzeit die Kontrolle über Entscheidungen."
+  },
+  {
+    "punkt": "Nebenbefund Sie auf Du-Seite: Berufseinsteiger FAQ „Was passiert nach dem Gespräch?“",
+    "seiten": [
+      "privat-berufseinsteiger"
+    ],
+    "alt": "Nach dem Gespräch wissen Sie, wo Sie stehen. Sie erhalten Klarheit über Ihre aktuelle Situation und mögliche nächste Schritte. Ob und wann Sie weitergehen, entscheiden Sie selbst.",
+    "neu": "Nach dem Gespräch weißt Du, wo Du stehst. Du erhältst Klarheit über Deine aktuelle Situation und mögliche nächste Schritte. Ob und wann Du weitergehst, entscheidest Du selbst."
+  },
+  {
+    "punkt": "Nebenbefund Sie auf Du-Seite: Gründer FAQ-Antwort",
+    "seiten": [
+      "gewerbe-gruender-und-freelancer"
+    ],
+    "alt": "So behalten Sie die Kontrolle, ohne sich zu überfordern.",
+    "neu": "So behältst Du die Kontrolle, ohne Dich zu überfordern."
+  },
+  {
+    "punkt": "Nebenbefund Tippfehler: Gründer „verlierest“",
+    "seiten": [
+      "gewerbe-gruender-und-freelancer"
+    ],
+    "alt": "Ohne Vorbereitung verlierest Du",
+    "neu": "Ohne Vorbereitung verlierst Du"
+  },
+  {
+    "punkt": "Nebenbefund Logikfehler: Vereine FAQ „Kostet uns das etwas …“",
+    "seiten": [
+      "gewerbe-vereine"
+    ],
+    "alt": "Was würde es kosten, wenn nichts passiert – und Sie haften?",
+    "neu": "Was würde es kosten, wenn etwas passiert – und Sie haften?"
+  }
+]

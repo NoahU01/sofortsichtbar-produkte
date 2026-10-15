@@ -4,8 +4,9 @@ Die Landingpage-Vorlagen, die vorher auf Landingi lagen. Sie sind als statisches
 
 - `index.html`: Übersicht aller Musterseiten
 - `<slug>/index.html` + `<slug>/assets/`: eine Musterseite. Jeder Ordner ist **in sich geschlossen** (CSS, JS, Bilder, Schriften liegen darin) und lässt sich 1:1 in ein eigenes Repo kopieren.
-- `seiten.json`: Liste der Seiten (Slug, Titel, Landingi-ID, dazu `style1_id` = inhaltlich geprüfte Style-1-Fassung als Referenz)
+- `seiten.json`: Liste der Seiten (Slug, Titel, Landingi-ID, `anrede` du/sie, `style1_id` = inhaltlich geprüfte Style-1-Fassung als Referenz)
 - `scripts/klonen.mjs`: zieht eine Seite von Landingi und legt alles lokal ab
+- `inhalte.json` + `scripts/inhalte.mjs`: inhaltliche Korrekturen (Kundenprüfung vom 14.10.2026), jeweils mit Verweis auf den Befund
 - `scripts/korrigieren.mjs`: behebt Text-Überlappungen aus der Landingi-Vorlage (schreibt `<slug>/assets/css/korrekturen.css`)
 - `scripts/uebersicht.mjs`: erzeugt `index.html` aus `seiten.json`
 
@@ -15,8 +16,11 @@ Alle Musterseiten sind **noindex**, per `<meta name="robots">` und per `X-Robots
 
 1. Eintrag in `seiten.json` ergänzen (`slug`, `titel`, `gruppe`, `id` = UUID aus der `landpage-preview.com`-URL).
 2. `node scripts/klonen.mjs <slug>`
-3. `node scripts/korrigieren.mjs <slug>` (einmalig vorher: `cd scripts && npm install`)
-4. `node scripts/uebersicht.mjs`
+3. `node scripts/inhalte.mjs` (wendet `inhalte.json` an)
+4. `node scripts/korrigieren.mjs <slug>` (einmalig vorher: `cd scripts && npm install`)
+5. `node scripts/uebersicht.mjs`
+
+Achtung: `klonen.mjs` überschreibt den Seitenordner. Danach immer Schritt 3 und 4 laufen lassen, sonst fehlen die Korrekturen.
 
 Was das Klonen ändert: Landingi-Statistik, Tag-Manager, Popups, Lightbox und Blinkloader werden entfernt. Alle Bilder, CSS, JS und Schriften (auch Google Fonts) werden lokal abgelegt. `lang="de"`, Titel und noindex werden gesetzt. Extern bleibt nur der Podbean-Podcast-Player.
 
