@@ -1,0 +1,142 @@
+[
+  {
+    "slug": "privat-angestellte",
+    "titel": "Angestellte",
+    "gruppe": "Privat",
+    "id": "b0d4f719-d14e-407c-a5c9-12d97c74499a",
+    "landingi": "Privat - Angestellte (style-3)"
+  },
+  {
+    "slug": "privat-bauherren",
+    "titel": "Bauherren",
+    "gruppe": "Privat",
+    "id": "9998e114-0e64-427f-bdac-7f828a126708",
+    "landingi": "Privat - Bauherren (style-3)"
+  },
+  {
+    "slug": "privat-berufseinsteiger",
+    "titel": "Berufseinsteiger",
+    "gruppe": "Privat",
+    "id": "5177b9dc-7f43-41fa-99ae-474072074baa",
+    "landingi": "Privat - Berufseinsteiger (style-3)"
+  },
+  {
+    "slug": "privat-digitale-nutzer",
+    "titel": "Digitale Nutzer",
+    "gruppe": "Privat",
+    "id": "632c4c8a-8e36-4bef-8df1-f6782582d949",
+    "landingi": "Privat - Digitale Nutzer (style-3)"
+  },
+  {
+    "slug": "privat-ferienwohnungen",
+    "titel": "Ferienwohnungen",
+    "gruppe": "Privat",
+    "id": "e3bd5dba-e30c-4775-907a-ef94e64e8851",
+    "landingi": "Privat - Ferienwohnungen (style-3)"
+  },
+  {
+    "slug": "privat-getrennte-personen",
+    "titel": "Getrennte Personen",
+    "gruppe": "Privat",
+    "id": "be63574a-2435-41c8-bd91-504a3902461a",
+    "landingi": "Privat - Getrennte Personen (style-3)"
+  },
+  {
+    "slug": "privat-junge-ehepaare",
+    "titel": "Junge Ehepaare",
+    "gruppe": "Privat",
+    "id": "963e597e-9c64-4eca-b029-052641af64fa",
+    "landingi": "Privat - Junge Ehepaare (style-3)"
+  },
+  {
+    "slug": "privat-tierhalter",
+    "titel": "Tierhalter",
+    "gruppe": "Privat",
+    "id": "5ed3684c-7706-4559-bd00-ea91eabba2c9",
+    "landingi": "Privat - Tierhalter (style-3)"
+  },
+  {
+    "slug": "privat-umzug",
+    "titel": "Umzug",
+    "gruppe": "Privat",
+    "id": "b5dc75a1-71fb-467f-9007-91f6a04344c7",
+    "landingi": "Privat - Umzug (style-3)"
+  },
+  {
+    "slug": "privat-werdende-eltern",
+    "titel": "Werdende Eltern",
+    "gruppe": "Privat",
+    "id": "6bdbb4b1-acd0-4d30-bbf8-8a852ff56d57",
+    "landingi": "Privat - Werdende Eltern (style-3)"
+  },
+  {
+    "slug": "gewerbe-aerzte",
+    "titel": "Ärzte",
+    "gruppe": "Gewerbe",
+    "id": "97669a61-f2af-4704-91db-e39dd213a4b3",
+    "landingi": "Gewerbe - Ärzte (style-3)"
+  },
+  {
+    "slug": "gewerbe-cyberfirmen",
+    "titel": "Cyberfirmen",
+    "gruppe": "Gewerbe",
+    "id": "6102f940-0063-4682-be78-17a243907c84",
+    "landingi": "Gewerbe - Cyberfirmen (style-3)"
+  },
+  {
+    "slug": "gewerbe-gewerbekunden",
+    "titel": "Gewerbekunden",
+    "gruppe": "Gewerbe",
+    "id": "aca3761a-dfde-48ec-976d-4706fd990a35",
+    "landingi": "Gewerbe - Gewerbekunden (style-3)"
+  },
+  {
+    "slug": "gewerbe-gruender-und-freelancer",
+    "titel": "Gründer und Freelancer",
+    "gruppe": "Gewerbe",
+    "id": "a21549eb-809a-43d5-b1d3-f169911b97ca",
+    "landingi": "Gewerbe - Gründer und Freelancer (style-3)"
+  },
+  {
+    "slug": "gewerbe-immomakler",
+    "titel": "Immomakler",
+    "gruppe": "Gewerbe",
+    "id": "7a532eb3-4b75-4698-88cd-e3379ae5ede9",
+    "landingi": "Gewerbe - Immomakler (style-3)"
+  },
+  {
+    "slug": "gewerbe-immoverwalter",
+    "titel": "Immoverwalter",
+    "gruppe": "Gewerbe",
+    "id": "fae620b3-e138-49c8-92c0-d171b86ffbf3",
+    "landingi": "Gewerbe - Immoverwalter (style-3)"
+  },
+  {
+    "slug": "gewerbe-landwirte",
+    "titel": "Landwirte",
+    "gruppe": "Gewerbe",
+    "id": "e0dab524-1b09-4ef1-850a-1fe4066a9842",
+    "landingi": "Gewerbe - Landwirte (style-3)"
+  },
+  {
+    "slug": "gewerbe-physio-und-pflege",
+    "titel": "Physio und Pflege",
+    "gruppe": "Gewerbe",
+    "id": "b640f818-847c-4661-847a-8cea73c43a19",
+    "landingi": "Gewerbe - Physio und Pflege (style-3)"
+  },
+  {
+    "slug": "gewerbe-rechtlich",
+    "titel": "Rechtlich",
+    "gruppe": "Gewerbe",
+    "id": "6d7e419a-82a5-40c8-a476-a56a9323c844",
+    "landingi": "Gewerbe - Rechtlich (style-3)"
+  },
+  {
+    "slug": "gewerbe-vereine",
+    "titel": "Vereine",
+    "gruppe": "Gewerbe",
+    "id": "d1bad2a6-b68d-4321-8a33-ee3d7dd0476e",
+    "landingi": "Gewerbe - Vereine (style-3)"
+  }
+]
