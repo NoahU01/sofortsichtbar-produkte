@@ -1,0 +1,9 @@
+{
+  "name": "sofortsichtbar-produkte-scripts",
+  "private": true,
+  "type": "module",
+  "devDependencies": {
+    "puppeteer": "^23.11.1",
+    "serve-handler": "^6.1.6"
+  }
+}
