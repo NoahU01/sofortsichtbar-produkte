@@ -5,5 +5,8 @@
   "devDependencies": {
     "puppeteer": "^23.11.1",
     "serve-handler": "^6.1.6"
+  },
+  "scripts": {
+    "alles": "node klonen.mjs && node inhalte.mjs && node anpassen.mjs && node korrigieren.mjs && node uebersicht.mjs"
   }
 }

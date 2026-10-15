@@ -31,7 +31,7 @@ const html = `<!doctype html>
 <body>
 <main>
   <h1>Musterseiten</h1>
-  <p>${seiten.length} Vorlagen, Desktop und Mobile. Formulare sind auf den Musterseiten nicht angebunden.</p>
+  <p>${seiten.length} Vorlagen, Desktop und Mobile. Formulare sind auf den Musterseiten nicht angebunden. Farbe über den Knopf unten links wechseln — der Link mit <code>?farbe=…</code> lässt sich direkt weitergeben.</p>
   <h2>Privat</h2>
   <ul>
 ${gruppe('Privat')}

@@ -19,7 +19,7 @@ import puppeteer from 'puppeteer';
 const ROOT = path.resolve(import.meta.dirname, '..');
 const ABSTAND = 12; // px Luft zwischen zwei Texten nach der Korrektur
 const LAYOUTS = [
-  { name: 'Mobile', breite: 375, media: '@media only screen and (max-width: 763px)' },
+  { name: 'Mobile', breite: 375, media: '@media only screen and (max-width: 959px)' },
   { name: 'Desktop', breite: 1440, media: '@media only screen and (min-width: 960px)' },
 ];
 

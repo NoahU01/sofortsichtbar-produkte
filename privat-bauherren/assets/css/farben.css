@@ -1,0 +1,4 @@
+/* Erzeugt von scripts/anpassen.mjs aus farben.json — Farbe über <html data-farbe="…"> wählen. */
+html[data-farbe="blau"] { --color-primary-0: 223,217,250; --color-primary-1: 149,128,238; --color-primary-2: 42,0,220; --color-primary-3: 21,0,110; --color-primary-4: 6,0,33; }
+html[data-farbe="gruen"] { --color-primary-0: 217,243,226; --color-primary-1: 129,214,159; --color-primary-2: 2,172,63; --color-primary-3: 1,86,32; --color-primary-4: 0,26,9; }
+html[data-farbe="rot"] { --color-primary-0: 252,217,217; --color-primary-1: 247,128,128; --color-primary-2: 238,0,0; --color-primary-3: 119,0,0; --color-primary-4: 36,0,0; }

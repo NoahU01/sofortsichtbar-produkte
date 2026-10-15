@@ -7,6 +7,7 @@ Die Landingpage-Vorlagen, die vorher auf Landingi lagen. Sie sind als statisches
 - `seiten.json`: Liste der Seiten (Slug, Titel, Landingi-ID, `anrede` du/sie, `style1_id` = inhaltlich geprüfte Style-1-Fassung als Referenz)
 - `scripts/klonen.mjs`: zieht eine Seite von Landingi und legt alles lokal ab
 - `inhalte.json` + `scripts/inhalte.mjs`: inhaltliche Korrekturen (Kundenprüfung vom 14.10.2026), jeweils mit Verweis auf den Befund
+- `farben.json` + `scripts/anpassen.mjs`: Farbpaletten (Blau, Grün, Rot) und Tablet-Umstellung, siehe unten
 - `scripts/korrigieren.mjs`: behebt Text-Überlappungen aus der Landingi-Vorlage (schreibt `<slug>/assets/css/korrekturen.css`)
 - `scripts/uebersicht.mjs`: erzeugt `index.html` aus `seiten.json`
 
@@ -17,10 +18,24 @@ Alle Musterseiten sind **noindex**, per `<meta name="robots">` und per `X-Robots
 1. Eintrag in `seiten.json` ergänzen (`slug`, `titel`, `gruppe`, `id` = UUID aus der `landpage-preview.com`-URL).
 2. `node scripts/klonen.mjs <slug>`
 3. `node scripts/inhalte.mjs` (wendet `inhalte.json` an)
-4. `node scripts/korrigieren.mjs <slug>` (einmalig vorher: `cd scripts && npm install`)
-5. `node scripts/uebersicht.mjs`
+4. `node scripts/anpassen.mjs <slug>` (Tablet + Farben)
+5. `node scripts/korrigieren.mjs <slug>` (einmalig vorher: `cd scripts && npm install`)
+6. `node scripts/uebersicht.mjs`
 
-Achtung: `klonen.mjs` überschreibt den Seitenordner. Danach immer Schritt 3 und 4 laufen lassen, sonst fehlen die Korrekturen.
+Alles auf einmal für alle Seiten: `cd scripts && npm run alles`.
+Achtung: `klonen.mjs` überschreibt den Seitenordner. Danach immer die Schritte 3–5 laufen lassen, sonst fehlen die Korrekturen.
+
+## Farben
+
+Jede Seite gibt es in allen Farben aus `farben.json`. Landingi färbt Buttons und Akzente über fünf Abstufungen `--color-primary-0…4`, nur die werden getauscht. Bilder und Icons sind in allen Farben gleich.
+
+- **Musterseite:** Knopf unten links oder Link mit `?farbe=gruen` / `?farbe=rot`.
+- **Kundenseite:** im `<html>`-Tag `data-farbe="…"` setzen, `assets/js/farbwahl.js` und den zugehörigen `<script>`-Tag entfernen.
+- **Neue Farbe:** Eintrag in `farben.json` (5 RGB-Abstufungen, hell → dunkel, Mitte = Hauptfarbe), dann `node scripts/anpassen.mjs`.
+
+## Tablet
+
+Landingis eigenes Tablet-Layout (764–959 px) war breiter als der Bildschirm. `anpassen.mjs` verschiebt den Mobile-Breakpoint auf 959 px, Tablets zeigen also das Mobile-Layout als mittige Spalte.
 
 Was das Klonen ändert: Landingi-Statistik, Tag-Manager, Popups, Lightbox und Blinkloader werden entfernt. Alle Bilder, CSS, JS und Schriften (auch Google Fonts) werden lokal abgelegt. `lang="de"`, Titel und noindex werden gesetzt. Extern bleibt nur der Podbean-Podcast-Player.
 
@@ -29,11 +44,11 @@ Was das Klonen ändert: Landingi-Statistik, Tag-Manager, Popups, Lightbox und Bl
 1. Ordner `<slug>/` in ein neues Repo kopieren (Inhalt ins Root).
 2. Texte, Logo, Kontaktdaten, Impressum/Datenschutz-Links anpassen.
 3. noindex entfernen (Meta-Tag in `index.html`), Formular-Sperre am Ende von `index.html` durch die echte Anbindung ersetzen.
-4. Vercel-Projekt im Team empiria-gmb-h anlegen, Domain verbinden.
+4. Farbe festlegen (siehe „Farben“).
+5. Vercel-Projekt im Team empiria-gmb-h anlegen, Domain verbinden.
 
 ## Offen
 
-- [ ] **Tablet (764–959 px, z. B. iPad hochkant):** Landingis Tablet-Layout ist breiter als der Bildschirm, Karten und Kontaktblöcke überlappen seitlich. Das war schon im Original so.
 
 - [ ] Vercel: Projekt im Team **empiria-gmb-h** anlegen und mit diesem Repo verbinden (Zugriff fehlt noch).
 - [ ] Formulare → **Datenbank** (Vercel-Funktion), sobald echte Kundenprojekte kommen.
