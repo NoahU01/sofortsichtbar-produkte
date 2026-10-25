@@ -1,0 +1,89 @@
+{
+  "_hinweis": "Eine Zeile je Landingpage. slug = Pfad unter der Domain (\"\" = Startseite). voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
+  "gemeinsam": {
+    "domain": "avrg.sofortsichtbar.de",
+    "indexieren": false,
+    "impressum": "https://www.sparkassenversicherung.de/impressum.html",
+    "datenschutz": "https://www.sparkassenversicherung.de/datenschutz.html"
+  },
+  "varianten": [
+    {
+      "slug": "",
+      "name": "Gebietsdirektion Owen",
+      "foto": "agentur.jpg",
+      "buchungTitel": "Termin direkt online buchen",
+      "direktTitel": "Oder rufe uns gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/795d5755-c495-426d-a732-05e7c54f6a70",
+      "voreinstellung": "Voreingestellt sind 1,5 Stunden.",
+      "telefon": "+49 7021 98080-0",
+      "mail": "service@sv-owen.de"
+    },
+    {
+      "slug": "sibylle",
+      "name": "Sibylle Schmid-Raichle",
+      "foto": "sibylle.jpg",
+      "buchungTitel": "Termin direkt bei Sibylle buchen",
+      "direktTitel": "Oder rufe Sibylle gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/2d4ef0c7-8b7f-4a47-94e6-e746ac039d1c",
+      "voreinstellung": "Voreingestellt ist 1 Stunde.",
+      "telefon": "+49 7021 98080-0",
+      "mail": "sibylle.schmid-raichle@sv-owen.de"
+    },
+    {
+      "slug": "thorsten",
+      "name": "Thorsten Precker",
+      "foto": "thorsten.jpg",
+      "buchungTitel": "Termin direkt bei Thorsten buchen",
+      "direktTitel": "Oder rufe Thorsten gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/00ead5cb-47a8-41d0-abca-56d202f455af",
+      "voreinstellung": "Ist bereits voreingestellt.",
+      "telefon": "+49 7021 98080-0",
+      "mail": "thorsten.precker@sv-owen.de"
+    },
+    {
+      "slug": "britta",
+      "name": "Britta Maier",
+      "foto": "britta.jpg",
+      "buchungTitel": "Termin direkt bei Britta buchen",
+      "direktTitel": "Oder rufe Britta gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/b1864480-257e-4926-9365-d798cd1cfea4",
+      "voreinstellung": "Voreingestellt ist 1 Stunde.",
+      "telefon": "+49 7021 98080-25",
+      "mail": "britta.maier@sv-owen.de"
+    },
+    {
+      "slug": "sandra",
+      "name": "Sandra Hild",
+      "foto": "sandra.jpg",
+      "buchungTitel": "Termin direkt bei Sandra buchen",
+      "direktTitel": "Oder rufe Sandra gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/c9781fd4-973b-4709-95c1-4e563d398b46",
+      "voreinstellung": "Voreingestellt sind 1,5 Stunden.",
+      "telefon": "+49 7021 98080-21",
+      "mail": "sandra.hild@sv-owen.de"
+    },
+    {
+      "slug": "tim",
+      "name": "Tim Bittner",
+      "foto": "tim.jpg",
+      "buchungTitel": "Termin direkt bei Tim buchen",
+      "direktTitel": "Oder rufe Tim gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/e8881023-fd37-42a4-94d5-24b5a49f2884",
+      "voreinstellung": "Ist bereits voreingestellt.",
+      "telefon": "+49 7021 98080-19",
+      "mail": "tim.bittner@sv-owen.de"
+    },
+    {
+      "slug": "luis",
+      "_offen": "Luis hat keinen eigenen SV-Kalender (nicht in der Mein-Termin-Vorlage, nicht auf sv-owen). Bis zur Klärung: Team-Kalender mit Mitarbeiterauswahl.",
+      "name": "Luis Koch",
+      "foto": "luis.jpg",
+      "buchungTitel": "Termin online buchen",
+      "direktTitel": "Oder rufe Luis gerne direkt an:",
+      "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/795d5755-c495-426d-a732-05e7c54f6a70",
+      "voreinstellung": "Voreingestellt sind 1,5 Stunden.",
+      "telefon": "+49 7021 98080-27",
+      "mail": "luis.koch@sv-owen.de"
+    }
+  ]
+}

@@ -1,0 +1,385 @@
+/* Landingpage AVRG · Variante 3 – Gestaltungsmaßstab Volksfest-Seite:
+   eine starke Bildidee (das Klarheits-Ticket), große Lora-Überschriften,
+   klare Flächenwechsel Weiß · Rot · Schwarz · Warmgrau. Agenturfarben bleiben:
+   Rot als Signal, Schwarz, Weiß. Bausteine (Rechner, Termin, FAQ) aus avrg.css. */
+@import url('../fonts/fonts.css');
+
+:root{
+  --font:'Poppins',system-ui,sans-serif;
+  --head:'Lora',Georgia,serif;
+  --ink:#1a1817;
+  --text:#3d3a37;
+  --muted:#6f6a64;
+  --line:#e7e4df;
+  --hell:#f6f5f2;
+  --wrap:74rem;
+}
+body{font:400 17px/1.6 var(--font);color:var(--ink)}
+h1,h2,h3{font-family:var(--head);font-weight:700;letter-spacing:-.02em;line-height:1.04}
+.wrap{max-width:var(--wrap)}
+.ico{stroke-width:1.8}
+
+.v3-sek{padding:clamp(80px,9vw,124px) 0}
+.v3-sek--rot{background:var(--rot);color:#fff}
+.v3-sek--schwarz{background:var(--ink);color:#fff}
+.v3-sek--hell{background:var(--hell)}
+.v3-sek--rot h2,.v3-sek--schwarz h2,.v3-sek--schwarz h3,.v3-ausgang h3,.v3-ausgang__wort{color:#fff}
+.v3-kicker{display:inline-flex;align-items:center;gap:.6rem;margin-bottom:1.1rem;font-size:.8rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase}
+.v3-kicker::before{content:"";width:1.4rem;height:3px;border-radius:2px;background:currentColor}
+.v3-h2{font-size:clamp(2.2rem,4.6vw,3.7rem);max-width:17ch}
+.v3-lead{margin-top:1.3rem;max-width:40rem;font-size:1.15rem;line-height:1.62;color:var(--text)}
+.v3-sek--rot .v3-lead,.v3-sek--schwarz .v3-lead{color:rgba(255,255,255,.86)}
+.v3-rot{color:var(--rot)}
+.knopf{font-family:var(--font);font-weight:600;font-size:16px}
+.knopf--weiss{background:#fff;color:var(--ink)}
+.knopf--weiss:hover{background:#f1f1f1}
+.knopf--rand-hell{background:transparent;color:#fff;box-shadow:inset 0 0 0 2px rgba(255,255,255,.5)}
+.knopf--rand-hell:hover{background:rgba(255,255,255,.1)}
+
+/* ---------- Aufmacher ---------- */
+.v3-held{padding:clamp(48px,6vw,88px) 0 clamp(56px,6vw,80px);overflow:hidden}
+.v3-held .wrap{display:grid;grid-template-columns:minmax(0,1.08fr) minmax(0,.92fr);gap:clamp(32px,5vw,72px);align-items:center}
+.v3-held h1{font-size:clamp(3rem,5.9vw,5.4rem);line-height:1}
+.v3-held h1 .v3-rot{display:block}
+.v3-held .v3-lead{font-size:clamp(1.08rem,1.4vw,1.22rem)}
+.v3-knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin-top:2rem}
+.v3-leute{display:flex;align-items:center;gap:18px;margin-top:2.6rem;padding-top:1.8rem;border-top:1px solid var(--line)}
+.v3-leute__fotos{display:flex;flex:none}
+.v3-leute__fotos img{width:52px;height:52px;border-radius:50%;object-fit:cover;border:3px solid #fff;margin-left:-14px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.v3-leute__fotos img:first-child{margin-left:0}
+.v3-leute p{font-size:15px;line-height:1.45;color:var(--text)}
+.v3-leute b{color:var(--ink);font-weight:600}
+
+/* Das Klarheits-Ticket */
+.ticket-buehne{position:relative;display:grid;place-items:center;padding:30px 0}
+.ticket{position:relative;display:grid;grid-template-columns:1fr 84px;width:min(100%,470px);transform:rotate(-4deg);isolation:isolate;transition:transform .4s ease}
+.ticket::before{content:"";position:absolute;z-index:-1;left:6%;right:6%;top:14%;bottom:-6%;border-radius:40px;background:rgba(150,20,20,.38);filter:blur(28px)}
+.ticket:hover{transform:rotate(-2deg) translateY(-4px)}
+.ticket__haupt,.ticket__abriss{background:var(--rot);color:#fff}
+.ticket__haupt{border-radius:22px 0 0 22px;padding:30px 28px 28px;
+  -webkit-mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at 100% 0,#0000 98%,#000) top right/100% 51% no-repeat,radial-gradient(circle 14px at 100% 100%,#0000 98%,#000) bottom right/100% 51% no-repeat}
+.ticket__abriss{border-radius:0 22px 22px 0;border-left:2.5px dashed rgba(255,255,255,.55);display:grid;place-items:center;
+  -webkit-mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left/100% 51% no-repeat;
+  mask:radial-gradient(circle 14px at 0 0,#0000 98%,#000) top left/100% 51% no-repeat,radial-gradient(circle 14px at 0 100%,#0000 98%,#000) bottom left/100% 51% no-repeat}
+.ticket__abriss span{writing-mode:vertical-rl;transform:rotate(180deg);font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.9}
+.ticket__art{font-size:12px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;opacity:.85}
+.ticket__titel{font-family:var(--head);font-weight:700;font-size:clamp(2.2rem,3.6vw,2.9rem);line-height:1;margin:.5rem 0 1.3rem;letter-spacing:-.02em}
+.ticket__titel small{display:block;font-size:.5em;font-weight:500;margin-top:.35rem;letter-spacing:0}
+.ticket__liste{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.ticket__liste li{display:flex;align-items:center;gap:12px;font-size:16px;font-weight:500}
+.ticket__box{width:24px;height:24px;border-radius:7px;border:2px solid rgba(255,255,255,.75);display:grid;place-items:center;flex:none;color:transparent;transition:all .35s}
+.ticket__box .ico{width:15px;height:15px;stroke-width:3}
+.ticket.ist-sichtbar .ticket__box{background:#fff;border-color:#fff;color:var(--rot)}
+.ticket.ist-sichtbar li:nth-child(2) .ticket__box{transition-delay:.45s}
+.ticket.ist-sichtbar li:nth-child(3) .ticket__box{transition-delay:.9s}
+.ticket__fuss{display:flex;align-items:center;gap:10px;margin-top:1.5rem;padding-top:1.1rem;border-top:1.5px solid rgba(255,255,255,.3);font-size:13px}
+.ticket__fuss img{width:34px;height:34px;border-radius:50%;border:2px solid #fff}
+.ticket__fuss b{display:block;font-weight:600;font-size:14px}
+.stempel{position:absolute;right:-6px;top:-18px;z-index:3;width:118px;height:118px;border-radius:50%;background:#fff;color:var(--ink);display:grid;place-items:center;text-align:center;transform:rotate(10deg);box-shadow:0 14px 30px rgba(0,0,0,.18);font-family:var(--head);font-weight:700;line-height:1.02;font-size:18px;border:3px solid var(--ink)}
+.stempel small{display:block;font-family:var(--font);font-weight:600;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;color:var(--rot)}
+
+/* ---------- Die Idee (rot) ---------- */
+.v3-zwei{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:clamp(32px,5vw,72px);align-items:center}
+.v3-idee p.v3-lead + p.v3-lead{margin-top:1rem}
+.v3-stimmen{background:#fff;color:var(--ink);border-radius:24px;padding:clamp(26px,3.2vw,38px);box-shadow:0 30px 60px -30px rgba(90,0,0,.45)}
+.v3-stimmen__titel{font-family:var(--head);font-weight:700;font-size:1.35rem;margin:0 0 1.2rem;color:var(--ink)}
+.v3-stimmen ul{list-style:none;margin:0;padding:0;display:grid;gap:14px}
+.v3-stimmen li{display:flex;align-items:flex-end;gap:12px}
+.v3-stimmen li:nth-child(2){flex-direction:row-reverse}
+.v3-stimmen li img{width:46px;height:46px;border-radius:50%;object-fit:cover;flex:none}
+.v3-stimmen li span{background:var(--hell);border-radius:20px 20px 20px 6px;padding:13px 17px;font-size:1.02rem;line-height:1.4;max-width:82%}
+.v3-stimmen li:nth-child(2) span{border-radius:20px 20px 6px 20px}
+.v3-stimmen__fuss{display:flex;align-items:center;gap:12px;margin-top:1.5rem;padding-top:1.2rem;border-top:1px solid var(--line);font-size:15px;color:var(--text);line-height:1.5}
+.v3-stimmen__fuss b{color:var(--rot);font-weight:600}
+
+/* ---------- Menschen ---------- */
+.v3-menschen{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px;margin-top:clamp(36px,4vw,52px)}
+.mensch{display:flex;flex-direction:column;border-radius:18px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.mensch img{width:100%;aspect-ratio:4/5;object-fit:cover}
+.mensch__text{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+.mensch__wer{font-size:12px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:var(--muted)}
+.mensch__wer{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mensch__frage{font-family:var(--head);font-weight:700;font-size:1.22rem;line-height:1.22;margin-top:.5rem;min-height:2.44em}
+.mensch__antwort{margin-top:.8rem;font-size:14.5px;line-height:1.55;color:var(--text)}
+
+/* ---------- Schritte ---------- */
+.v3-schritte{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:16px;margin-top:clamp(36px,4vw,52px)}
+.v3-schritt{position:relative;border:1px solid var(--line);border-radius:18px;padding:28px 26px 30px;background:#fff}
+.v3-schritt__ico{width:56px;height:56px;border-radius:14px;background:var(--ink);color:#fff;display:grid;place-items:center}
+.v3-schritt:last-child .v3-schritt__ico{background:var(--rot)}
+.v3-schritt__ico .ico{width:28px;height:28px}
+.v3-schritt__nr{position:absolute;right:24px;top:24px;font-family:var(--head);font-weight:700;color:#c9c4bd;font-size:1.1rem}
+.v3-schritt h3{font-size:1.5rem;margin-top:1.4rem}
+.v3-schritt p{margin-top:.6rem;color:var(--text);font-size:15.5px}
+
+/* ---------- Zwei Ausgänge (schwarz) ---------- */
+.v3-ausgaenge{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:clamp(36px,4vw,52px)}
+.v3-ausgang{border-radius:20px;padding:clamp(28px,3.4vw,44px);background:#262321;display:flex;flex-direction:column}
+.v3-ausgang--rot{background:var(--rot)}
+.v3-ausgang__wort{font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,5vw,4rem);line-height:1}
+.v3-ausgang h3{font-family:var(--font);font-weight:600;font-size:1.15rem;margin-top:1.4rem;letter-spacing:0}
+.v3-ausgang p{margin-top:.5rem;color:rgba(255,255,255,.82);line-height:1.6}
+.v3-ausgang__plus{margin-top:auto;padding-top:1.4rem}
+.v3-ausgang__plus span{display:block;padding-top:1.1rem;border-top:1.5px solid rgba(255,255,255,.25);font-size:15px;line-height:1.55}
+
+/* ---------- Rechner & Termin: Bausteine aus avrg.css im Volksfest-Look ---------- */
+.rechner,.buchung{border-radius:20px}
+.rechner__ergebnis{background:#fff}
+.regler output{font-family:var(--head);font-weight:700;letter-spacing:-.02em}
+.gross{font-weight:600}
+.v3-ausgang p.v3-ausgang__wort{color:#fff}
+.v3-termin{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:clamp(32px,5vw,72px);align-items:start}
+.v3-termin .ticket{width:min(100%,400px);margin-top:2.4rem;transform:rotate(3deg)}
+.v3-termin .ticket__titel{font-size:2.1rem}
+.v3-kontakt{display:grid;gap:10px;margin-top:2rem}
+.v3-kontakt a{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:var(--ink);font-weight:500}
+.v3-kontakt .ico{color:var(--rot)}
+
+/* ---------- FAQ-Kasten ---------- */
+.v3-kasten{border:2px solid var(--ink);border-radius:20px;padding:clamp(26px,3.4vw,44px)}
+.v3-kasten .faq{max-width:none;border-top:0}
+.v3-kasten .faq summary{font-family:var(--head);font-weight:700;font-size:1.25rem}
+.faq summary .plus{background:var(--rot)}
+
+/* ---------- Schluss ---------- */
+.v3-schluss{text-align:center}
+.v3-schluss h2{font-size:clamp(2.6rem,6vw,5rem);max-width:none}
+.v3-schluss .v3-knoepfe{justify-content:center}
+
+@media (max-width:1100px){
+  .v3-menschen{grid-template-columns:repeat(3,minmax(0,1fr))}
+}
+@media (max-width:980px){
+  .v3-held .wrap,.v3-zwei,.v3-termin{grid-template-columns:minmax(0,1fr)}
+  .ticket-buehne{padding:10px 0 20px}
+  .v3-schritte{grid-template-columns:minmax(0,1fr)}
+}
+@media (max-width:700px){
+  .v3-menschen{grid-template-columns:none;grid-auto-flow:column;grid-auto-columns:72%;overflow-x:auto;scroll-padding:0 var(--pad);margin-left:calc(-1 * var(--pad));margin-right:calc(-1 * var(--pad));padding:0 var(--pad) 8px;scroll-snap-type:x mandatory;scrollbar-width:none}
+  .v3-menschen::-webkit-scrollbar{display:none}
+  .mensch{scroll-snap-align:start}
+  .v3-ausgaenge{grid-template-columns:minmax(0,1fr)}
+  .ticket{grid-template-columns:1fr 60px}
+  .ticket__haupt{padding:24px 20px 22px}
+  .stempel{width:92px;height:92px;font-size:15px;right:-4px;top:-26px}
+  .v3-leute{align-items:flex-start;flex-direction:column;gap:12px}
+}
+
+/* ---------- Überarbeitung 11.10. ---------- */
+/* Ergebnis wie die Social-Media-Karten der Volksfest-Seite: weiße Karte, großer Farbteil, großes Symbol */
+.ausgaenge{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:1.4rem;margin-top:clamp(36px,4vw,52px)}
+.ausgaenge .ausgang{padding:0;display:block;border-radius:20px;background:#fff;border:1px solid #e4e0db;overflow:hidden;box-shadow:0 24px 50px -40px rgba(26,24,23,.35)}
+.ausgang__kopf{display:flex;align-items:center;gap:.6rem;margin:0;padding:.9rem 1.2rem;font-size:.85rem;font-weight:600;color:var(--ink)}
+.ausgang__kopf span{display:grid;place-items:center;width:28px;height:28px;border-radius:50%;background:var(--rot);color:#fff;font-size:.8rem;font-weight:700}
+.ausgang__bild{position:relative;aspect-ratio:16/11;display:flex;flex-direction:column;justify-content:space-between;padding:clamp(24px,2.6vw,34px)}
+.ausgang__bild--rot{background:var(--rot);color:#fff}
+.ausgang__bild--hell{background:var(--hell);color:var(--ink)}
+.ausgang__bild small{font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}
+.ausgang__bild b{font-family:var(--head);font-weight:700;font-size:clamp(2.6rem,4.6vw,4rem);line-height:1.05;letter-spacing:-.02em}
+.ausgang__bild .ico{position:absolute;right:clamp(22px,2.4vw,32px);top:clamp(22px,2.4vw,32px);width:clamp(4.4rem,7vw,6rem);height:clamp(4.4rem,7vw,6rem);stroke-width:1.6}
+.ausgang__bild--rot .ico{color:#fff}
+.ausgang__bild--hell .ico{color:var(--rot);stroke-width:2.2}
+.ausgang__text{margin:0;padding:1.1rem 1.2rem 1.4rem;font-size:15.5px;line-height:1.6;color:var(--text)}
+.ausgang__text b{color:var(--ink)}
+@media (max-width:760px){.ausgaenge{grid-template-columns:minmax(0,1fr)}}
+/* Sandra im Ticket groß – der Fuß des Tickets ist die Person */
+.ticket__fuss{gap:16px;margin-top:1.6rem;padding-top:1.3rem}
+.ticket__fuss img{width:76px;height:76px;border-width:3px;flex:0 0 auto}
+.ticket__fuss b{font-family:var(--head);font-size:1.35rem;font-weight:700;line-height:1.2;margin-bottom:3px}
+.ticket__fuss span{font-size:14px;line-height:1.4}
+/* Kontakt unter dem Ticket im Termin-Bereich */
+.v3-kontakt{gap:14px;margin-top:2.6rem}
+.v3-kontakt__titel{font-family:var(--head);font-weight:700;font-size:1.4rem;color:var(--ink);margin:0}
+.v3-kontakt a.v3-kontakt__tel{justify-self:start;color:#fff;font-size:1.2rem;padding:1rem 1.6rem}
+.v3-kontakt a.v3-kontakt__tel .ico{color:#fff;width:22px;height:22px}
+.v3-kontakt a{font-size:1.05rem}
+.ticket__fuss small{display:block;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;opacity:.85;margin-bottom:2px}
+.ticket__fuss b{white-space:nowrap}
+
+/* ---------- Die Idee: Familienchat im iPhone (Aufbau wie beim Budget-Retter) ---------- */
+.v3-phone{position:relative;justify-self:center;width:min(300px,78vw)}
+.v3-phone-rahmen{position:relative;aspect-ratio:71.7/148.7;border-radius:13%/6%;background:linear-gradient(150deg,#2b2b2b 0%,#0d0d0d 42%,#202020 100%);padding:9px;box-shadow:0 40px 80px rgba(80,0,0,.45),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+.v3-taste{position:absolute;background:#17171a;border-radius:3px;z-index:-1}
+.v3-taste--stumm{left:-3px;top:15.5%;width:3.5px;height:4.2%}
+.v3-taste--lauter{left:-3.5px;top:23.5%;width:4px;height:8.4%}
+.v3-taste--leiser{left:-3.5px;top:34%;width:4px;height:8.4%}
+.v3-taste--power{right:-3.5px;top:28%;width:4px;height:12.6%}
+.v3-schirm{position:relative;height:100%;border-radius:11%/5.2%;background:#f3efe9;overflow:hidden;display:flex;flex-direction:column;font-family:var(--font)}
+.v3-insel{position:absolute;left:50%;top:9px;transform:translateX(-50%);width:31%;height:22px;border-radius:12px;background:#000;z-index:3}
+.v3-status{display:flex;align-items:center;justify-content:space-between;padding:12px 20px 0;font-size:.68rem;font-weight:600;color:#1a1817}
+.v3-status svg{height:9px;width:auto;display:block}
+.v3-status-r{display:flex;gap:5px;align-items:center}
+.v3-chatkopf{display:flex;align-items:center;gap:10px;padding:16px 14px 10px;border-bottom:1px solid #e3ddd4;background:rgba(255,255,255,.6)}
+.v3-gruppe{display:flex;flex:none}
+.v3-gruppe img{width:26px;height:26px;border-radius:50%;object-fit:cover;border:2px solid #f3efe9;margin-left:-9px}
+.v3-gruppe img:first-child{margin-left:0}
+.v3-chatkopf b{display:block;font-size:.8rem;font-weight:600;line-height:1.2;color:var(--ink)}
+.v3-chatkopf small{display:block;font-size:.62rem;color:var(--muted)}
+.v3-verlauf{flex:1;display:flex;flex-direction:column;justify-content:flex-end;gap:9px;padding:12px 11px 14px}
+.v3-tag{align-self:center;font-size:.58rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;color:#9a948b;background:rgba(0,0,0,.05);padding:3px 9px;border-radius:999px}
+.v3-msg{display:flex;align-items:flex-end;gap:7px;max-width:88%;opacity:0;transform:translateY(8px) scale(.97)}
+.v3-msg img{width:24px;height:24px;border-radius:50%;object-fit:cover;flex:none}
+.v3-msg p{margin:0;background:#fff;border-radius:14px 14px 14px 4px;padding:8px 11px;font-size:.76rem;line-height:1.4;color:var(--ink);box-shadow:0 1px 2px rgba(0,0,0,.06)}
+.v3-msg small{display:block;font-size:.6rem;font-weight:600;color:var(--rot);margin-bottom:1px}
+.v3-msg--2 small{color:#8a5a00}
+.v3-msg--3 small{color:#3d6b8f}
+.v3-msg--du{align-self:flex-end;display:block;margin:0;background:var(--rot);color:#fff;border-radius:14px 14px 4px 14px;padding:9px 12px;font-size:.76rem;line-height:1.42;font-weight:500;max-width:80%}
+.v3-zeit{display:block;margin-top:3px;font-size:.55rem;opacity:.75;text-align:right;font-weight:500}
+.v3-tippt{align-self:flex-end;display:flex;gap:4px;padding:10px 12px;background:var(--rot);border-radius:14px;opacity:0;height:0;padding-top:0;padding-bottom:0;overflow:hidden}
+.v3-tippt i{width:6px;height:6px;border-radius:50%;background:rgba(255,255,255,.7);animation:v3-huepf 1.1s ease-in-out infinite}
+.v3-tippt i:nth-child(2){animation-delay:.15s}
+.v3-tippt i:nth-child(3){animation-delay:.3s}
+.v3-eingabe{display:flex;align-items:center;gap:8px;padding:8px 11px 10px}
+.v3-plus{width:26px;height:26px;border-radius:50%;background:rgba(26,24,23,.07);display:grid;place-items:center;font-size:1rem;color:rgba(26,24,23,.55);flex:none}
+.v3-feld{flex:1;height:30px;border-radius:999px;background:#fff;border:1px solid #ddd8d0;display:flex;align-items:center;padding:0 13px;font-size:.68rem;color:#a9a39a}
+.v3-home{width:36%;height:4px;border-radius:2px;background:rgba(0,0,0,.28);margin:0 auto 7px}
+.v3-phone.ist-sichtbar .v3-msg{animation:v3-rein .45s cubic-bezier(.2,.8,.3,1) forwards}
+.v3-phone.ist-sichtbar .v3-msg--1{animation-delay:.3s}
+.v3-phone.ist-sichtbar .v3-msg--2{animation-delay:1.3s}
+.v3-phone.ist-sichtbar .v3-msg--3{animation-delay:2.3s}
+.v3-phone.ist-sichtbar .v3-tippt{animation:v3-tipp-an .25s ease 3.1s forwards,v3-tipp-aus .2s ease 4.3s forwards}
+.v3-phone.ist-sichtbar .v3-msg--du{animation-delay:4.4s}
+@keyframes v3-rein{to{opacity:1;transform:none}}
+@keyframes v3-tipp-an{to{opacity:1;height:auto;padding-top:10px;padding-bottom:10px}}
+@keyframes v3-tipp-aus{to{opacity:0;height:0;padding:0;margin:0}}
+@keyframes v3-huepf{0%,60%,100%{transform:none}30%{transform:translateY(-4px)}}
+@media (prefers-reduced-motion:reduce){.v3-msg{opacity:1;transform:none;animation:none!important}.v3-tippt{display:none}}
+
+/* Rechner (nur Variante 3): pro Kasten links einstellen, rechts ablesen.
+   Regel: alle Einstellwerte gleich formatiert (schwarz), alle Ergebnisse gleich formatiert (rot).
+   Details stehen im aufklappbaren „Wie wir rechnen“. */
+.rk{display:grid;grid-template-columns:1fr 1fr;background:#fff;border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.rk+.rk{margin-top:20px}
+.rk__ein{padding:clamp(28px,4vw,44px);display:flex;flex-direction:column;justify-content:center;gap:34px;border-right:1px solid var(--line)}
+.rk__kopf{display:flex;justify-content:space-between;align-items:center;gap:16px}
+.rk__feld input[type=range]{margin-top:16px}
+.rk__kopf label,.rk__kopf>span{font-size:17px;font-weight:500;color:var(--ink)}
+.rk__wert{font:600 28px/1 var(--font);color:var(--ink);font-variant-numeric:tabular-nums;letter-spacing:-.01em;white-space:nowrap}
+.rk__zaehler{display:flex;align-items:center;gap:4px}
+.rk__zaehler button{width:40px;height:40px;border-radius:50%;border:1px solid var(--line);background:#fff;font:500 20px/1 var(--font);color:var(--ink);cursor:pointer}
+.rk__zaehler button:hover:not(:disabled){background:#f3f3f3}
+.rk__zaehler button:disabled{color:var(--line);cursor:default}
+.rk__zaehler output{min-width:40px;text-align:center}
+.rk__aus{padding:clamp(28px,4vw,44px);background:#fafafa;display:flex;flex-direction:column;justify-content:center}
+.rk__frage{font-size:15px;color:var(--muted);margin:0 0 8px}
+.rk__zahl{display:flex;align-items:baseline;gap:10px;margin:0;font:600 clamp(44px,5.4vw,64px)/1 var(--font);color:var(--rot);letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.rk__zahl small{font:400 17px/1 var(--font);color:var(--ink);letter-spacing:0}
+.rk__zahl .rk__rund{color:var(--muted)}
+.rk__satz{margin:12px 0 0;font-size:15px;color:var(--text);line-height:1.45}
+.rk__info{margin-top:18px}
+.rk__info summary{cursor:pointer;list-style:none;display:inline-flex;align-items:center;gap:8px;color:var(--ink);font-weight:500;font-size:14px}
+.rk__info summary::-webkit-details-marker{display:none}
+.rk__info summary::before{content:"i";display:inline-grid;place-items:center;width:18px;height:18px;border-radius:50%;border:1.5px solid currentColor;font:600 11px/1 var(--font)}
+.rk__info[open] summary{margin-bottom:12px}
+.rk__liste{list-style:none;margin:0 0 12px;padding:0;border-top:1px solid var(--line)}
+.rk__liste li{display:flex;justify-content:space-between;gap:16px;padding:9px 0;border-bottom:1px solid var(--line);font-size:14px;color:var(--text)}
+.rk__liste b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums}
+.rk__liste li.summe b{color:var(--rot)}
+.rk__info p{margin:0;font-size:13px;line-height:1.55;color:var(--muted);max-width:36em}
+.rk__cta{margin:28px 0 0}
+@media (max-width:900px){.rk{grid-template-columns:1fr}.rk__ein{border-right:0;border-bottom:1px solid var(--line)}}
+
+/* Termin: echter SV-Kalender (lässt sich nicht einbetten – X-Frame-Options SAMEORIGIN), daher Absprung mit Anleitung */
+.buchung--echt{display:flex;flex-direction:column;align-self:start}
+.buchung__kicker{font-size:14px;color:var(--muted);margin:0 0 6px}
+.buchung__titel{font-size:clamp(24px,2.4vw,30px);margin:0 0 22px;color:var(--ink)}
+.buchung__schritte{list-style:none;counter-reset:s;margin:0 0 26px;padding:0;display:grid;gap:18px}
+.buchung__schritte li{counter-increment:s;display:grid;grid-template-columns:36px 1fr;column-gap:14px;align-items:start}
+.buchung__schritte li::before{content:counter(s);grid-row:span 2;width:36px;height:36px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;font:600 15px/1 var(--font)}
+.buchung__schritte b{font-weight:500;color:var(--ink);line-height:1.35;padding-top:6px}
+.buchung__schritte span{font-size:15px;color:var(--muted);line-height:1.45}
+.buchung__hinweis{margin:12px 0 0;font-size:13px;color:var(--muted);text-align:center}
+
+/* Termin: ein Kasten – links das Ticket, rechts auf gleicher Höhe die Buchung. Darunter, mittig, der direkte Draht. */
+.v3-einloesen{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:center;gap:clamp(32px,5vw,72px);margin-top:clamp(32px,4vw,48px);padding:clamp(32px,4.5vw,64px);background:#fff;border:1px solid var(--line);border-radius:24px}
+.v3-einloesen__ticket{display:flex;justify-content:center}
+.v3-einloesen .ticket{width:min(100%,420px);margin:0;transform:rotate(-3deg)}
+.v3-einloesen .ticket__titel{font-size:2.1rem}
+.v3-einloesen__buchung .knopf{width:100%}
+.v3-direkt{margin-top:clamp(32px,4vw,48px);text-align:center}
+.v3-direkt__titel{font-family:var(--head);font-weight:700;font-size:1.35rem;color:var(--ink);margin:0 0 16px}
+.v3-direkt__wege{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:14px 28px}
+.v3-direkt__wege a:not(.knopf),.v3-direkt__wege span{display:inline-flex;align-items:center;gap:10px;color:var(--ink);text-decoration:none;font-weight:500}
+.v3-direkt__wege .ico{width:20px;height:20px;color:var(--rot)}
+.v3-direkt__wege .knopf .ico{color:currentColor}
+@media (max-width:980px){.v3-einloesen{grid-template-columns:minmax(0,1fr)}.v3-einloesen .ticket{width:min(100%,380px)}}
+@media (max-width:600px){.v3-einloesen{padding:28px 20px}.v3-einloesen .ticket{width:calc(100% - 16px);transform:rotate(-2deg)}}
+
+/* Rechner kompakt und geordnet: rechts nur zwei Stile – rote Zahl und ein Text.
+   Zeile 1: Zahl + Einheit, darunter Erklärung, ganz unten „Wie wir rechnen“. */
+.rk__ein,.rk__aus{padding:clamp(24px,3vw,36px) clamp(24px,3.4vw,40px)}
+.rk__ein{gap:26px}
+.rk__zahl{font-size:clamp(40px,4.4vw,52px);gap:12px}
+.rk__zahl small,.rk__satz,.rk__info summary{font:400 15.5px/1.5 var(--font);color:var(--text)}
+.rk__zahl small{letter-spacing:0;line-height:1}
+.rk__satz{margin:10px 0 0;max-width:34em}
+.rk__info{margin-top:12px}
+.rk__info summary{gap:8px;text-decoration:underline;text-decoration-color:var(--line);text-underline-offset:4px}
+.rk__info summary:hover{text-decoration-color:currentColor}
+.rk__info summary::before{width:16px;height:16px;border-width:1.2px;font-size:10px}
+.rk__info[open] summary{margin-bottom:10px}
+.rk+.rk{margin-top:16px}
+.rk__cta{margin-top:24px}
+
+/* Ticket: Logo der SV Owen in Weiß, mittig im Abriss (senkrecht) */
+.ticket__abriss{position:relative}
+.ticket__logo{position:absolute;left:50%;top:50%;height:28px;width:auto;max-width:none;transform:translate(-50%,-50%) rotate(-90deg)}
+@media (max-width:700px){.ticket__logo{height:22px}}
+
+/* Idee-Sektion: Weiß mit Glow in Rot und Violett hinter dem iPhone.
+   Kein Abschneiden: seitlich nur am Bildschirmrand (overflow-x:clip), oben darf der Glow minimal
+   in den weißen Kopfbereich auslaufen, unten endet er weich vor dem Rechner.
+   Festgelegt: die breitere Fassung (Auswahl 2 vom 22.10.). */
+.v3-idee-sek{position:relative;background:#fff;overflow-x:clip;overflow-y:visible;
+  --g1:rgba(238,0,0,.42);--g2:rgba(155,52,142,.40);--g3:rgba(195,133,187,.38);--g4:rgba(238,0,0,.22)}
+.v3-idee-sek .v3-phone{isolation:isolate}
+.v3-idee-sek .v3-phone::before{content:"";position:absolute;z-index:-1;pointer-events:none;
+  inset:-8% -120% 4%;filter:blur(46px);
+  background:
+    radial-gradient(34% 30% at 40% 30%,var(--g1) 0%,transparent 100%),
+    radial-gradient(30% 34% at 64% 66%,var(--g2) 0%,transparent 100%),
+    radial-gradient(26% 24% at 30% 72%,var(--g3) 0%,transparent 100%),
+    radial-gradient(22% 22% at 72% 26%,var(--g4) 0%,transparent 100%)}
+.v3-idee-sek{color:var(--ink)}
+.v3-idee-sek h2{color:var(--ink)}
+.v3-idee-sek .v3-lead{color:var(--text)}
+.v3-idee-sek .v3-kicker{color:var(--rot)}
+.v3-idee-sek .v3-phone-rahmen{box-shadow:0 40px 80px rgba(60,10,20,.22),inset 0 0 0 1.5px rgba(255,255,255,.12)}
+
+/* Ticket: drei Schriftstile, sonst nichts.
+   1 Überzeile  – Poppins 600, 12 px, Versalien, eine Zeile (Stempel wie vorher)
+   2 Titel      – Lora 700
+   3 Text       – Poppins 500, 16 px (Fragen, Name, Kanäle; Name nur halbfett) */
+.ticket__art{opacity:1}
+.ticket__titel{max-width:9ch;font-size:clamp(2.2rem,3.4vw,2.7rem);line-height:1.02;margin:.6rem 0 1.4rem}
+.v3-termin .ticket__titel,.v3-einloesen .ticket__titel{font-size:2.2rem}
+.ticket__fuss{align-items:center}
+.ticket__fuss span{font-size:16px;font-weight:500;line-height:1.4}
+.ticket__fuss b{font-family:var(--font);font-size:16px;font-weight:600;line-height:1.4;margin:0}
+.ticket__fuss img{width:56px;height:56px}
+@media (max-width:600px){.v3-einloesen{padding:22px 10px}.v3-einloesen .ticket{width:100%;grid-template-columns:1fr 48px}.v3-einloesen .ticket__haupt{padding:22px 16px 20px}}
+/* Ticket skaliert mit seiner eigenen Breite: Überzeile bleibt einzeilig, Fragen und Fuß gleich groß */
+.ticket__haupt{min-width:0;container-type:inline-size}
+.ticket__art{white-space:nowrap;letter-spacing:.12em;font-size:min(12px,4.1cqi)}
+.ticket__liste li,.ticket__fuss span,.ticket__fuss b{font-size:min(16px,6.4cqi)}
+
+/* Rechner: Alter der Kinder als Doppelschieber (links Alter heute, rechts „Kindergeld bis“, 18–25) */
+.rk__kinder{display:flex;flex-direction:column;gap:26px}
+.rk__kinder:empty{display:none}
+.rk__kind .rk__kopf>span{font-size:17px;font-weight:500;color:var(--ink)}
+.doppel{position:relative;height:28px;margin-top:16px}
+.doppel__spur{position:absolute;left:0;right:0;top:11px;height:6px;border-radius:6px;background:var(--line)}
+.doppel__fuell{position:absolute;top:0;height:100%;border-radius:6px;background:var(--rot)}
+.doppel input[type=range]{position:absolute;inset:0;width:100%;height:28px;margin:0;background:none;pointer-events:none;-webkit-appearance:none;appearance:none}
+.doppel input[type=range]::-webkit-slider-runnable-track{background:none;height:6px}
+.doppel input[type=range]::-moz-range-track{background:none}
+.doppel input[type=range]::-moz-range-progress{background:none}
+.doppel input[type=range]::-webkit-slider-thumb{pointer-events:auto;cursor:pointer}
+.doppel input[type=range]::-moz-range-thumb{pointer-events:auto;cursor:pointer}
+.doppel input[data-r="bis"]::-webkit-slider-thumb{background:var(--rot);border-color:var(--rot)}
+.doppel input[data-r="bis"]::-moz-range-thumb{background:var(--rot);border-color:var(--rot)}
+.doppel__skala{position:relative;height:18px;margin-top:6px;font-size:12.5px}
+.doppel__lab{position:absolute;top:0;white-space:nowrap;font-weight:500}
+.doppel__alt{color:var(--ink)}
+.doppel__bis{color:var(--rot)}

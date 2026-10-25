@@ -1,0 +1,286 @@
+/* Landingpage AVRG – Agenturauftritt im Stil der sofortsichtbar-Landingpages
+   (Referenz: sv-owen.sofortsichtbar.de/bauherren). Weiß, Schwarz, Grautöne,
+   Rot nur für Handlung (CTA) und für das, was der Staat dazulegt. */
+@import url('../fonts/ubuntu.css');
+
+:root{
+  --rot:#ed1c24;
+  --rot-dunkel:#c8141b;
+  --ink:#111;
+  --text:#2f3237;
+  --muted:#6b6f75;
+  --line:#e4e4e4;
+  --grau:#f5f5f5;
+  --weiss:#fff;
+  --radius:12px;
+  --wrap:1200px;
+  --pad:clamp(20px,4vw,40px);
+  --font:'Ubuntu',system-ui,-apple-system,'Segoe UI',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--weiss);color:var(--text);font:400 17px/1.6 var(--font);overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{color:var(--ink);font-weight:400;letter-spacing:-.01em;margin:0}
+p{margin:0}
+.wrap{max-width:var(--wrap);margin:0 auto;padding:0 var(--pad)}
+.ico{width:1.1em;height:1.1em;flex:none;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+/* Entwicklungsband */
+.dev{background:#222;color:#cfd2d6;font-size:13px}
+.dev .wrap{display:flex;justify-content:space-between;gap:16px;padding-top:8px;padding-bottom:8px}
+.dev a{color:#fff;text-decoration:none;white-space:nowrap}
+
+/* Kopf */
+.kopf{position:sticky;top:0;z-index:20;background:#fff;border-bottom:1px solid transparent;transition:border-color .2s}
+.kopf.ist-gescrollt{border-bottom-color:var(--line)}
+.kopf .wrap{display:flex;align-items:center;gap:40px;height:74px}
+.logo{margin-right:auto;display:block}
+.logo img{height:30px;width:auto}
+.nav{display:flex;align-items:center;gap:40px;font-size:15px}
+.nav a{text-decoration:none;color:var(--ink)}
+.nav a:not(.knopf):hover{color:var(--rot)}
+
+/* Knöpfe – rot wie in der Referenz */
+.knopf{display:inline-flex;align-items:center;justify-content:center;gap:10px;background:var(--rot);color:#fff;text-decoration:none;font:500 15px/1 var(--font);padding:17px 30px;border-radius:999px;border:0;cursor:pointer;transition:background .15s,transform .15s}
+.knopf:hover{background:var(--rot-dunkel)}
+.nav a.knopf{color:#fff;padding:14px 24px;font-size:14px}
+.knopf--rand{background:#fff;color:var(--ink);box-shadow:inset 0 0 0 1.5px var(--ink)}
+.knopf--rand:hover{background:var(--grau)}
+
+/* Bausteine */
+.sektion{padding:clamp(72px,9vw,120px) 0}
+.sektion--grau{background:var(--grau)}
+.kicker{font-size:15px;color:var(--muted);margin-bottom:10px}
+.titel{font-size:clamp(32px,4vw,46px);line-height:1.18;text-wrap:balance}
+.lead{font-size:16px;line-height:1.55;color:var(--text);max-width:34em}
+.kopfzeile{text-align:center;max-width:720px;margin:0 auto clamp(40px,5vw,56px)}
+.kopfzeile .lead{margin:14px auto 0}
+
+/* Aufmacher: Foto über die volle Breite, Text links auf hellem Verlauf */
+.held{position:relative;min-height:min(780px,calc(100vh - 74px));display:flex;align-items:center;overflow:hidden;background:#efe9e1}
+.held__bild{position:absolute;top:0;bottom:0;left:auto;right:-14%;width:114%;height:100%;object-fit:cover;object-position:60% 30%}
+.held::before{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(255,255,255,.97) 0%,rgba(255,255,255,.93) 36%,rgba(255,255,255,.5) 50%,rgba(255,255,255,0) 60%)}
+.held .wrap{position:relative;z-index:2;width:100%;padding-top:72px;padding-bottom:72px}
+.held__text{max-width:560px}
+.held h1{font-size:clamp(48px,6.2vw,84px);line-height:1.04;letter-spacing:-.02em}
+.held .lead{margin-top:24px;font-size:clamp(17px,1.5vw,19px);max-width:30em}
+.held__knoepfe{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.held__fuss{display:flex;align-items:center;gap:10px;margin-top:22px;font-size:14px;color:var(--muted)}
+.held__fuss .ico{color:var(--rot)}
+
+/* Variante 1: Text mittig wie in der Vorlage, Foto darunter – die Gesichter bleiben frei */
+.held--mitte{display:block;min-height:0;background:#fff;overflow:visible}
+.held--mitte::before{display:none}
+.held--mitte .wrap{padding-top:clamp(36px,4vw,56px);padding-bottom:0}
+.held--mitte .held__text{max-width:860px;margin:0 auto;text-align:center}
+.held--mitte h1{font-size:clamp(44px,5vw,68px)}
+.held--mitte .lead{margin-left:auto;margin-right:auto;max-width:38em;margin-top:18px}
+.held--mitte .held__knoepfe{justify-content:center;margin-top:28px}
+.held--mitte .held__fuss{justify-content:center}
+.held--mitte .held__foto{max-width:var(--wrap);margin:clamp(28px,3vw,40px) auto 0;padding:0 var(--pad)}
+.held--mitte .held__bild{position:static;width:100%;height:clamp(300px,40vw,560px);object-fit:cover;object-position:50% 52%;border-radius:22px}
+
+/* Problem: Fotokarten wie „Was kann konkret passieren?“ */
+.faelle{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.fall img{width:100%;aspect-ratio:306/170;object-fit:cover;border-radius:var(--radius)}
+.fall h3{font-size:18px;font-weight:500;margin-top:18px;line-height:1.3}
+.fall p{margin-top:10px;font-size:15.5px;color:var(--muted);line-height:1.55}
+.entwarnung{text-align:center;margin-top:56px;font-size:clamp(20px,2vw,24px);color:var(--ink);line-height:1.4}
+
+/* Lösung: Kasten wie in der Referenz, rechts die Gesprächskarte */
+.loesung{display:grid;grid-template-columns:1fr 1fr;gap:clamp(32px,5vw,64px);align-items:center;border:1px solid var(--line);border-radius:22px;padding:clamp(28px,4.4vw,56px)}
+.loesung .titel{margin-top:4px}
+.loesung .lead{margin-top:16px}
+.punkte{list-style:none;margin:26px 0 32px;padding:0;display:grid;gap:12px}
+.punkte li{display:flex;gap:12px;align-items:flex-start;color:var(--ink);font-size:16px;line-height:1.45}
+.punkte li::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--ink);margin-top:9px;flex:none}
+
+.karte{background:var(--weiss);border:1px solid var(--line);border-radius:20px;box-shadow:0 26px 60px -34px rgba(0,0,0,.35);padding:28px}
+.karte__kopf{display:flex;align-items:center;gap:14px;padding-bottom:20px;border-bottom:1px solid var(--line)}
+.karte__kopf img{width:52px;height:52px;border-radius:50%}
+.karte__kopf b{display:block;color:var(--ink);font-weight:500}
+.karte__kopf small{display:block;color:var(--muted);font-size:14px}
+.karte__fragen{list-style:none;margin:6px 0 0;padding:0}
+.karte__fragen li{display:flex;align-items:center;gap:14px;padding:15px 0;border-bottom:1px dashed var(--line);font-size:18px;color:var(--ink)}
+.haken{width:30px;height:30px;border-radius:50%;border:1.5px solid var(--line);display:grid;place-items:center;flex:none;color:transparent;transition:all .35s}
+.haken .ico{width:16px;height:16px;stroke-width:2.6}
+.karte.ist-sichtbar .haken{background:var(--ink);border-color:var(--ink);color:#fff}
+.karte.ist-sichtbar li:nth-child(2) .haken{transition-delay:.45s}
+.karte.ist-sichtbar li:nth-child(3) .haken{transition-delay:.9s}
+.karte__ergebnis{display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:10px;margin-top:20px}
+.karte__ergebnis span{border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.35;color:var(--ink);background:var(--grau)}
+.karte__ergebnis b{display:block;font-weight:500;font-size:15px;white-space:nowrap}
+.karte__ergebnis i{font-style:normal;font-size:13px;color:var(--muted)}
+
+/* Zwei Ausgänge */
+.ausgaenge{display:grid;grid-template-columns:1fr 1fr;gap:20px}
+.ausgang{border:1px solid var(--line);border-radius:var(--radius);padding:clamp(26px,3vw,38px);background:#fff;display:flex;flex-direction:column}
+.ausgang__zeichen{width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin-bottom:22px}
+.ausgang__zeichen .ico{width:22px;height:22px}
+.ausgang h3{font-size:clamp(24px,2.4vw,30px);line-height:1.2}
+.ausgang p{margin-top:12px;color:var(--muted)}
+.ausgang__ontop{margin-top:auto;padding-top:22px}
+.ausgang__ontop span{display:block;border-top:1px solid var(--line);padding-top:18px;font-size:15px;color:var(--ink);line-height:1.55}
+.ausgang__ontop b{font-weight:500}
+
+/* Rechner */
+.rechner{display:grid;grid-template-columns:1fr 1.05fr;background:var(--weiss);border:1px solid var(--line);border-radius:22px;overflow:hidden}
+.rechner__eingabe{padding:clamp(28px,4vw,48px);display:flex;flex-direction:column;gap:36px;border-right:1px solid var(--line)}
+.regler label,.regler .regler__titel{display:flex;justify-content:space-between;align-items:baseline;gap:12px;color:var(--ink);font-weight:500;margin-bottom:16px}
+.regler output{font-size:28px;font-weight:500;color:var(--ink);white-space:nowrap}
+.regler output small{font-size:15px;font-weight:400;color:var(--muted)}
+.regler__hinweis{font-size:14px;color:var(--muted);margin-top:10px;min-height:1.6em}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:28px;background:transparent;margin:0;cursor:pointer;--wert:50%}
+input[type=range]::-webkit-slider-runnable-track{height:6px;border-radius:6px;background:linear-gradient(to right,var(--ink) var(--wert),var(--line) var(--wert))}
+input[type=range]::-moz-range-track{height:6px;border-radius:6px;background:var(--line)}
+input[type=range]::-moz-range-progress{height:6px;border-radius:6px;background:var(--ink)}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:28px;height:28px;border-radius:50%;background:#fff;border:2px solid var(--ink);margin-top:-11px;box-shadow:0 2px 6px rgba(0,0,0,.12)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;background:#fff;border:2px solid var(--ink)}
+input[type=range]:focus-visible{outline:none}
+input[type=range]:focus-visible::-webkit-slider-thumb{box-shadow:0 0 0 5px rgba(0,0,0,.12)}
+.skala{display:flex;justify-content:space-between;font-size:13px;color:var(--muted);margin-top:4px}
+.zaehler{display:flex;align-items:center;border:1px solid var(--line);border-radius:999px;width:max-content}
+.zaehler button{width:52px;height:52px;border:0;background:transparent;font:500 24px/1 var(--font);color:var(--ink);cursor:pointer;border-radius:50%}
+.zaehler button:hover:not(:disabled){background:var(--grau)}
+.zaehler button:disabled{color:var(--line);cursor:default}
+.zaehler output{min-width:64px;text-align:center;font-size:24px}
+.beispiele{margin-top:auto;padding-top:28px;border-top:1px solid var(--line)}
+.beispiele p{color:var(--ink);font-weight:500;margin-bottom:14px}
+.beispiele .chips{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.beispiel{font:inherit;background:none;display:flex;flex-direction:column;align-items:flex-start;text-align:left;border:1px solid var(--line);border-radius:10px;padding:10px 14px;font-size:15px;color:var(--ink);cursor:pointer;line-height:1.3;white-space:nowrap;min-width:0;transition:border-color .15s,background .15s}
+.beispiel small{font-size:12.5px;color:var(--muted)}
+.beispiel:hover{border-color:var(--ink)}
+.beispiel.ist-aktiv{background:var(--ink);border-color:var(--ink);color:#fff}
+.beispiel.ist-aktiv small{color:#c9c9c9}
+.rechner__ergebnis{padding:clamp(28px,4vw,48px);background:#fafafa}
+.rechner__ergebnis .kicker{margin-bottom:6px}
+.gross{font-size:clamp(46px,6vw,70px);line-height:1;color:var(--rot);font-weight:500;letter-spacing:-.03em;font-variant-numeric:tabular-nums}
+.gross small{font-size:.36em;color:var(--ink);font-weight:400;letter-spacing:0;margin-left:6px}
+/* Balken auf fester Skala: Mehr Beitrag = längerer Balken, mehr Zulage = längerer roter Balken */
+.balken{margin:30px 0 4px;display:grid;gap:14px}
+.balken__zeile{display:grid;grid-template-columns:120px 1fr;align-items:center;gap:14px;font-size:14px;color:var(--text)}
+.balken__spur{height:14px;border-radius:999px;background:#ececec;overflow:hidden}
+.balken__spur span{display:block;height:100%;border-radius:999px;transition:width .35s ease}
+.b-eigen{background:#8a8d92}
+.b-staat{background:var(--rot)}
+.zeilen{margin:26px 0 0;padding:0;list-style:none;border-top:1px solid var(--line)}
+.zeilen li{display:flex;justify-content:space-between;gap:16px;padding:12px 0;border-bottom:1px solid var(--line);font-size:16px}
+.zeilen li b{font-weight:500;color:var(--ink);font-variant-numeric:tabular-nums;white-space:nowrap}
+.zeilen li.summe b{color:var(--rot)}
+.rechner__satz{margin-top:22px;font-size:18px;color:var(--ink);line-height:1.45}
+.rechner__satz b{font-weight:500;color:var(--rot)}
+.rechner__fuss{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px 24px;margin-top:26px}
+.rechner__fuss p{font-size:12.5px;color:var(--muted);max-width:30em;line-height:1.5}
+
+/* Ablauf */
+.schritte{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;counter-reset:s}
+.schritt{border:1px solid var(--line);border-radius:var(--radius);padding:28px 26px;background:var(--weiss)}
+.schritt::before{counter-increment:s;content:counter(s);display:grid;place-items:center;width:46px;height:46px;border-radius:50%;background:var(--ink);color:#fff;font-weight:500;margin-bottom:26px}
+.schritt h3{font-size:18px;font-weight:500;line-height:1.3}
+.schritt p{margin-top:10px;font-size:15.5px;color:var(--muted)}
+
+/* Termin */
+.termin{display:grid;grid-template-columns:.85fr 1.15fr;gap:clamp(32px,5vw,72px);align-items:start}
+.person{display:flex;align-items:center;gap:16px;margin-top:30px}
+.person img{width:72px;height:72px;border-radius:50%}
+.person b{display:block;color:var(--ink);font-weight:500;font-size:18px}
+.person small{display:block;color:var(--muted);font-size:14px}
+.buchung{background:var(--weiss);border:1px solid var(--line);border-radius:22px;padding:clamp(24px,3.4vw,40px)}
+.buchung fieldset{border:0;padding:0;margin:0 0 24px}
+.buchung legend{color:var(--ink);font-weight:500;margin-bottom:12px;padding:0}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{position:relative}
+.chip input{position:absolute;opacity:0;pointer-events:none}
+.chip span{display:inline-flex;flex-direction:column;align-items:center;justify-content:center;border:1px solid var(--line);border-radius:10px;padding:10px 15px;font-size:15px;color:var(--ink);cursor:pointer;min-width:64px;line-height:1.25;transition:border-color .15s,background .15s}
+.chip span small{font-size:12px;color:var(--muted)}
+.chip span:hover{border-color:var(--ink)}
+.chip input:checked+span{background:var(--ink);border-color:var(--ink);color:#fff}
+.chip input:checked+span small{color:#c9c9c9}
+.chip input:focus-visible+span{outline:2px solid var(--ink);outline-offset:2px}
+.felder{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.felder .breit{grid-column:1/-1}
+.feld input{width:100%;border:0;background:var(--grau);border-radius:10px;padding:18px 16px;font:400 15px var(--font);color:var(--ink)}
+.feld input:focus{outline:2px solid var(--ink);background:#fff}
+.einwilligung{display:flex;gap:10px;font-size:13px;color:var(--muted);margin:16px 0 22px;line-height:1.5}
+.einwilligung input{margin-top:3px;accent-color:var(--ink)}
+.buchung .knopf{width:100%}
+.attrappe{font-size:12.5px;color:var(--muted);text-align:center;margin-top:12px}
+.danke{display:none;text-align:center;padding:30px 10px}
+.danke .rund{width:64px;height:64px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin:0 auto 22px}
+.danke .rund .ico{width:30px;height:30px;stroke-width:2.6}
+.danke h3{font-size:28px}
+.danke p{margin:12px auto 0;max-width:26em}
+.buchung.ist-gebucht form{display:none}
+.buchung.ist-gebucht .danke{display:block}
+
+/* Fragen & Antworten */
+.faq{max-width:860px;margin:0 auto;border-top:1px solid var(--line)}
+.faq details{border-bottom:1px solid var(--line)}
+.faq summary{list-style:none;cursor:pointer;display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;font-size:18px;color:var(--ink)}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary .plus{width:34px;height:34px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;flex:none;transition:transform .2s}
+.faq summary .plus .ico{width:16px;height:16px}
+.faq details[open] summary .plus{transform:rotate(45deg)}
+.faq details p{padding:0 56px 24px 0;max-width:46em;color:var(--text)}
+
+/* Kontakt wie in der Referenz */
+.kontakt-ende{text-align:center}
+.kontakt-ende .lead{margin:14px auto 0;color:var(--muted)}
+.kontakt-ende .person{justify-content:center;text-align:left}
+.kontakt-karten{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:40px}
+.kontakt-karte{border:1px solid var(--line);border-radius:var(--radius);padding:32px 20px;display:flex;flex-direction:column;align-items:center;gap:6px;text-decoration:none;color:var(--ink)}
+.kontakt-karte .rund{width:48px;height:48px;border-radius:50%;background:var(--ink);color:#fff;display:grid;place-items:center;margin-bottom:18px}
+.kontakt-karte .rund .ico{width:20px;height:20px}
+.kontakt-karte b{font-weight:500}
+.kontakt-karte small{font-size:14px;color:var(--muted)}
+a.kontakt-karte:hover{border-color:var(--ink)}
+
+.fuss{padding:34px 0 40px;font-size:15px}
+.fuss .wrap{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:16px}
+.fuss img{height:30px;width:auto}
+.fuss nav{display:flex;gap:30px}
+.fuss a{text-decoration:none;color:var(--ink)}
+
+/* Mobil: fester Knopf unten */
+.mobil-cta{display:none}
+
+@media (max-width:980px){
+  .nav a:not(.knopf){display:none}
+  .loesung,.termin{grid-template-columns:1fr}
+  .faelle,.schritte{grid-template-columns:1fr}
+  .faelle{gap:36px}
+  .rechner{grid-template-columns:1fr}
+  .rechner__eingabe{border-right:0;border-bottom:1px solid var(--line)}
+  .held::before{background:linear-gradient(90deg,rgba(255,255,255,.96) 0%,rgba(255,255,255,.88) 48%,rgba(255,255,255,.2) 78%,rgba(255,255,255,0) 100%)}
+}
+@media (max-width:700px){
+  body{font-size:16px}
+  .kopf .wrap{height:64px}
+  .kopf .knopf{display:none}
+  .logo img{height:26px}
+  /* Mobil: Foto oben, Text darunter */
+  .held{display:block;min-height:0;background:#fff}
+  .held::before{display:none}
+  .held__bild{position:static;width:100%;height:300px;object-position:62% 30%}
+  .held .wrap{padding-top:34px;padding-bottom:56px}
+  .held__knoepfe .knopf{width:100%}
+  .ausgaenge,.kontakt-karten{grid-template-columns:1fr}
+  .karte{padding:22px 20px}
+  .karte__ergebnis{grid-template-columns:1fr;text-align:center}
+  .felder{grid-template-columns:1fr}
+  #tage,#zeiten{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+  #tage .chip span,#zeiten .chip span{min-width:0;width:100%;padding:10px 4px}
+  .faq details p{padding-right:0}
+  .balken__zeile{grid-template-columns:96px 1fr}
+  .mobil-cta{display:block;position:fixed;left:12px;right:12px;bottom:12px;z-index:30;transform:translateY(140%);transition:transform .3s}
+  .mobil-cta.ist-sichtbar{transform:none}
+  .mobil-cta .knopf{width:100%;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+  .dev .wrap span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+
+/* Satz „Auf jeden Euro … legt der Staat X Cent drauf“ ausgeblendet (Daniel, 15.10.2026).
+   Bewusst visibility statt display: der Platz bleibt, Hinweis und Knopf rutschen nicht hoch. */
+.rechner__satz{visibility:hidden}

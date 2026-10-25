@@ -47,6 +47,33 @@ Was das Klonen ändert: Landingi-Statistik, Tag-Manager, Popups, Lightbox und Bl
 4. Farbe festlegen (siehe „Farben“).
 5. Vercel-Projekt im Team empiria-gmb-h anlegen, Domain verbinden.
 
+## Kundenseiten
+
+### AVRG · SV Owen (avrg.sofortsichtbar.de)
+
+Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.html` aus dem Repo `avrg`, von Daniel), in sieben Varianten:
+
+| avrg.sofortsichtbar.de | Variante | Termin-Link |
+|---|---|---|
+| `/` | Allgemein (Agenturbild) | Team-Kalender „Alle AD Mitarbeiter“ |
+| `/sibylle/` | Sibylle Schmid-Raichle | eigener Kalender |
+| `/thorsten/` | Thorsten Precker | eigener Kalender |
+| `/britta/` | Britta Maier | eigener Kalender |
+| `/sandra/` | Sandra Hild | eigener Kalender |
+| `/tim/` | Tim Bittner | eigener Kalender |
+| `/luis/` | Luis Koch | Team-Kalender (kein eigener) |
+
+- `scripts/avrg/vorlage.html` – Daniels Seite, personenbezogene Stellen als `{{platzhalter}}`
+- `scripts/avrg/varianten.json` – Name, Foto, Termin-Link, Telefon, Mail je Variante
+- `node scripts/avrg.mjs` – schreibt `avrg/` neu (Ausgabe wird committet, wie die Musterseiten)
+- `avrg/assets/` – CSS, Schriften (selbst gehostet), Bilder. Alle Pfade relativ, damit die Seiten unter `/avrg/…` und auf der Subdomain gleich funktionieren.
+
+Änderungen aus dem `avrg`-Repo: Diff von `projekte/avrg-landingpage-3.html` in `scripts/avrg/vorlage.html` übertragen (Platzhalter stehen lassen), CSS nach `avrg/assets/css/`, dann `node scripts/avrg.mjs`.
+
+### Subdomains
+
+`middleware.js` legt eine Subdomain auf einen Ordner (`SUBDOMAINS`). Neue Kundenseite mit eigener Subdomain: Ordner anlegen, Zeile in `SUBDOMAINS`, Domain im Vercel-Projekt hinzufügen, CNAME bei IONOS. Ein Rewrite in `vercel.json` reicht dafür nicht: Vercel liefert vorhandene Dateien vor Rewrites aus, `/` würde die Musterseiten-Übersicht zeigen.
+
 ## Offen
 
 
