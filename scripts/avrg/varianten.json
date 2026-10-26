@@ -2,10 +2,9 @@
   "_hinweis": "Eine Zeile je Landingpage. slug = Pfad unter der Domain (Nachname, allgemein = sv-owen; die nackte Domain leitet auf sv-owen weiter). voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
   "gemeinsam": {
     "domain": "avrg.sofortsichtbar.de",
-    "indexieren": false,
-    "impressum": "https://www.sparkassenversicherung.de/impressum.html",
-    "datenschutz": "https://www.sparkassenversicherung.de/datenschutz.html",
-    "start": "sv-owen"
+    "indexieren": true,
+    "start": "sv-owen",
+    "beschreibung": "Neue geförderte Altersvorsorge ab 2027: In 30 Minuten weißt du, ob du etwas davon hast. Kostenlos – am Telefon, per Video oder im Büro in Owen."
   },
   "varianten": [
     {

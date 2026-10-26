@@ -3,10 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Neue Altersvorsorge 2027 · Klarheits-Ticket | SV Owen</title>
-<meta name="description" content="Die neue geförderte Altersvorsorge ab 2027: Dein Klarheits-Ticket – in 30 Minuten weißt du, ob du etwas davon hast.">
+<title>{{titel}}</title>
+<meta name="description" content="{{beschreibung}}">
 {{robots}}
-<link rel="stylesheet" href="{{basis}}assets/css/avrg.css?v={{version}}">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="de_DE">
+<meta property="og:site_name" content="SV Owen">
+<meta property="og:title" content="{{titel}}">
+<meta property="og:description" content="{{beschreibung}}">
+<meta property="og:url" content="{{url}}">
+{{jsonld}}<link rel="stylesheet" href="{{basis}}assets/css/avrg.css?v={{version}}">
 <link rel="stylesheet" href="{{basis}}assets/css/avrg-v3.css?v={{version}}">
 </head>
 <body>
@@ -237,7 +243,7 @@
 
 </main>
 
-<footer class="fuss"><div class="wrap"><img src="{{basis}}assets/bilder/sv-owen-logo.svg" alt="SV Owen"><nav><a href="{{impressum}}" target="_blank" rel="noopener">Impressum</a><a href="{{datenschutz}}" target="_blank" rel="noopener">Datenschutz</a></nav></div></footer>
+<footer class="fuss"><div class="wrap"><img src="{{basis}}assets/bilder/sv-owen-logo.svg" alt="SV Owen"><nav><a href="{{basis}}impressum/">Impressum</a><a href="{{basis}}datenschutz/">Datenschutz</a></nav></div></footer>
 
 <div class="mobil-cta" id="mobil-cta"><a class="knopf" href="#termin">Ticket einlösen</a></div>
 

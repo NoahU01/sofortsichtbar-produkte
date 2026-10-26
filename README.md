@@ -66,6 +66,8 @@ Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.
 - `scripts/avrg/vorlage.html` – Daniels Seite, personenbezogene Stellen als `{{platzhalter}}`
 - `scripts/avrg/varianten.json` – Name, Foto, Termin-Link, Telefon, Mail je Variante
 - `node scripts/avrg.mjs` – schreibt `avrg/` neu (Ausgabe wird committet, wie die Musterseiten)
+- `scripts/avrg/rechtstexte/` – Impressum und Datenschutz (Quelle: öffentlicher-dienst-exklusiv.de, angepasst auf Vercel). `<!-- TRACKING:… -->` markiert, wo die Abschnitte zu Analytics und Cookie-Banner hingehören.
+- Indexierung: `gemeinsam.indexieren` in `varianten.json` (Canonical je Seite, `robots.txt`, `sitemap.xml`). Der `X-Robots-Tag: noindex` aus `vercel.json` gilt für alle Hosts außer `avrg.sofortsichtbar.de`; unter `/avrg/` auf der Vercel-Domain bleiben die Seiten also noindex (keine Dubletten).
 - `avrg/assets/` – CSS, Schriften (selbst gehostet), Bilder. Alle Pfade relativ, damit die Seiten unter `/avrg/…` und auf der Subdomain gleich funktionieren.
 
 Änderungen aus dem `avrg`-Repo: Diff von `projekte/avrg-landingpage-3.html` in `scripts/avrg/vorlage.html` übertragen (Platzhalter stehen lassen), CSS nach `avrg/assets/css/`, dann `node scripts/avrg.mjs`.
