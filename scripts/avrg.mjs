@@ -116,6 +116,9 @@ function rechtsseite(gemeinsam, text, url) {
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>${esc(titel)} | ${esc(gemeinsam.marke)}</title>
 ${robots}
+<link rel="icon" href="../../assets/bilder/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="96x96" href="../../assets/bilder/favicon-96.png">
+<link rel="apple-touch-icon" href="../../assets/bilder/apple-touch-icon.png">
 <link rel="stylesheet" href="../../assets/css/avrg.css?v=${version}">
 <link rel="stylesheet" href="../../assets/css/avrg-v3.css?v=${version}">
 <style>
@@ -204,5 +207,7 @@ await schreibe('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
 ${kundenSitemaps.map((u) => `  <sitemap><loc>${u}</loc><lastmod>${heute}</lastmod></sitemap>`).join('\n')}
 </sitemapindex>
 `);
+// Browser und Crawler fragen /favicon.ico auch ohne Verweis ab
+await writeFile(path.join(ZIEL, 'favicon.ico'), await readFile(path.join(ZIEL, 'assets/bilder/favicon.ico')));
 await schreibe('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${BASIS_URL}sitemap.xml\n`);
 console.log(`${BASIS_URL}sitemap.xml (Index über ${kundenSitemaps.length} Kunden), robots.txt`);
