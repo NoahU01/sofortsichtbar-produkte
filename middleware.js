@@ -1,17 +1,23 @@
 // Subdomains von sofortsichtbar.de auf einen Ordner in diesem Repo legen:
-// avrg.sofortsichtbar.de/tim/ zeigt avrg/tim/index.html.
+// avrg.sofortsichtbar.de/hild/ zeigt avrg/hild/index.html.
 // Middleware statt Rewrite in vercel.json, weil Rewrites erst greifen, wenn unter dem Pfad
-// keine Datei liegt – avrg.sofortsichtbar.de/ würde sonst die Musterseiten-Übersicht zeigen.
+// keine Datei liegt – die Subdomain würde sonst Dateien aus dem ganzen Repo ausliefern.
+// start = wohin die nackte Domain weiterleitet (307, damit sie sich später noch ändern lässt).
 const SUBDOMAINS = {
-  'avrg.sofortsichtbar.de': '/avrg',
+  'avrg.sofortsichtbar.de': { ordner: '/avrg', start: '/sv-owen/' },
 };
 
 export default function middleware(request) {
   const url = new URL(request.url);
   const host = (request.headers.get('host') || url.hostname).split(':')[0];
-  const ordner = SUBDOMAINS[host];
-  if (!ordner) {
+  const ziel = SUBDOMAINS[host];
+  if (!ziel) {
     return new Response(null, { headers: { 'x-middleware-next': '1' } });
+  }
+  const { ordner, start } = ziel;
+  if (url.pathname === '/' && start) {
+    url.pathname = start;
+    return Response.redirect(url, 307);
   }
   // Auf der Subdomain gibt es nur den Ordner – und den nur unter seinen kurzen Adressen
   if (url.pathname === ordner || url.pathname.startsWith(ordner + '/')) {

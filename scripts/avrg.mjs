@@ -1,7 +1,7 @@
 // Erzeugt die AVRG-Landingpages (SV Owen) in avrg/: eine Seite je Variante aus
 // scripts/avrg/vorlage.html + scripts/avrg/varianten.json. Ausgabe wird committet (kein Build auf Vercel).
 //   node scripts/avrg.mjs
-import { readFile, writeFile, mkdir, rm } from 'node:fs/promises';
+import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
@@ -18,8 +18,10 @@ const version = hash.digest('hex').slice(0, 8);
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const { gemeinsam } = daten;
 
-// Alte Variantenordner entfernen, assets/ bleibt
-for (const v of daten.varianten) if (v.slug) await rm(path.join(ZIEL, v.slug), { recursive: true, force: true });
+// Alles außer assets/ neu schreiben – auch umbenannte oder entfernte Varianten verschwinden
+for (const eintrag of await readdir(ZIEL)) {
+  if (eintrag !== 'assets') await rm(path.join(ZIEL, eintrag), { recursive: true, force: true });
+}
 
 const slugs = new Set();
 for (const v of daten.varianten) {

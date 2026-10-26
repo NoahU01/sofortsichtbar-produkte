@@ -55,13 +55,13 @@ Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.
 
 | avrg.sofortsichtbar.de | Variante | Termin-Link |
 |---|---|---|
-| `/` | Allgemein (Agenturbild) | Team-Kalender „Alle AD Mitarbeiter“ |
-| `/sibylle/` | Sibylle Schmid-Raichle | eigener Kalender |
-| `/thorsten/` | Thorsten Precker | eigener Kalender |
-| `/britta/` | Britta Maier | eigener Kalender |
-| `/sandra/` | Sandra Hild | eigener Kalender |
-| `/tim/` | Tim Bittner | eigener Kalender |
-| `/luis/` | Luis Koch | Team-Kalender (kein eigener) |
+| `/sv-owen/` (auch `/` leitet hierhin) | Allgemein (Agenturbild) | Team-Kalender „Alle AD Mitarbeiter“ |
+| `/schmid-raichle/` | Sibylle Schmid-Raichle | eigener Kalender |
+| `/precker/` | Thorsten Precker | eigener Kalender |
+| `/maier/` | Britta Maier | eigener Kalender |
+| `/hild/` | Sandra Hild | eigener Kalender |
+| `/bittner/` | Tim Bittner | eigener Kalender |
+| `/koch/` | Luis Koch | Team-Kalender (kein eigener) |
 
 - `scripts/avrg/vorlage.html` – Daniels Seite, personenbezogene Stellen als `{{platzhalter}}`
 - `scripts/avrg/varianten.json` – Name, Foto, Termin-Link, Telefon, Mail je Variante

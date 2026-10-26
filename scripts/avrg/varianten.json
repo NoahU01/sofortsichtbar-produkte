@@ -1,14 +1,15 @@
 {
-  "_hinweis": "Eine Zeile je Landingpage. slug = Pfad unter der Domain (\"\" = Startseite). voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
+  "_hinweis": "Eine Zeile je Landingpage. slug = Pfad unter der Domain (Nachname, allgemein = sv-owen; die nackte Domain leitet auf sv-owen weiter). voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
   "gemeinsam": {
     "domain": "avrg.sofortsichtbar.de",
     "indexieren": false,
     "impressum": "https://www.sparkassenversicherung.de/impressum.html",
-    "datenschutz": "https://www.sparkassenversicherung.de/datenschutz.html"
+    "datenschutz": "https://www.sparkassenversicherung.de/datenschutz.html",
+    "start": "sv-owen"
   },
   "varianten": [
     {
-      "slug": "",
+      "slug": "sv-owen",
       "name": "Gebietsdirektion Owen",
       "foto": "agentur.jpg",
       "buchungTitel": "Termin direkt online buchen",
@@ -19,7 +20,7 @@
       "mail": "service@sv-owen.de"
     },
     {
-      "slug": "sibylle",
+      "slug": "schmid-raichle",
       "name": "Sibylle Schmid-Raichle",
       "foto": "sibylle.jpg",
       "buchungTitel": "Termin direkt bei Sibylle buchen",
@@ -30,7 +31,7 @@
       "mail": "sibylle.schmid-raichle@sv-owen.de"
     },
     {
-      "slug": "thorsten",
+      "slug": "precker",
       "name": "Thorsten Precker",
       "foto": "thorsten.jpg",
       "buchungTitel": "Termin direkt bei Thorsten buchen",
@@ -41,7 +42,7 @@
       "mail": "thorsten.precker@sv-owen.de"
     },
     {
-      "slug": "britta",
+      "slug": "maier",
       "name": "Britta Maier",
       "foto": "britta.jpg",
       "buchungTitel": "Termin direkt bei Britta buchen",
@@ -52,7 +53,7 @@
       "mail": "britta.maier@sv-owen.de"
     },
     {
-      "slug": "sandra",
+      "slug": "hild",
       "name": "Sandra Hild",
       "foto": "sandra.jpg",
       "buchungTitel": "Termin direkt bei Sandra buchen",
@@ -63,7 +64,7 @@
       "mail": "sandra.hild@sv-owen.de"
     },
     {
-      "slug": "tim",
+      "slug": "bittner",
       "name": "Tim Bittner",
       "foto": "tim.jpg",
       "buchungTitel": "Termin direkt bei Tim buchen",
@@ -74,7 +75,7 @@
       "mail": "tim.bittner@sv-owen.de"
     },
     {
-      "slug": "luis",
+      "slug": "koch",
       "_offen": "Luis hat keinen eigenen SV-Kalender (nicht in der Mein-Termin-Vorlage, nicht auf sv-owen). Bis zur Klärung: Team-Kalender mit Mitarbeiterauswahl.",
       "name": "Luis Koch",
       "foto": "luis.jpg",
