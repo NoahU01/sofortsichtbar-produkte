@@ -10,8 +10,13 @@ export default function middleware(request) {
   const url = new URL(request.url);
   const host = (request.headers.get('host') || url.hostname).split(':')[0];
   const ordner = SUBDOMAINS[host];
-  if (!ordner || url.pathname.startsWith(ordner + '/')) {
+  if (!ordner) {
     return new Response(null, { headers: { 'x-middleware-next': '1' } });
+  }
+  // Auf der Subdomain gibt es nur den Ordner – und den nur unter seinen kurzen Adressen
+  if (url.pathname === ordner || url.pathname.startsWith(ordner + '/')) {
+    url.pathname = url.pathname.slice(ordner.length) || '/';
+    return Response.redirect(url, 308);
   }
   url.pathname = ordner + url.pathname;
   return new Response(null, { headers: { 'x-middleware-rewrite': url.toString() } });
