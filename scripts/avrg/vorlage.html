@@ -12,7 +12,7 @@
 <meta property="og:title" content="{{titel}}">
 <meta property="og:description" content="{{beschreibung}}">
 <meta property="og:url" content="{{url}}">
-{{jsonld}}<link rel="stylesheet" href="{{basis}}assets/css/avrg.css?v={{version}}">
+{{jsonld}}{{tracking}}<link rel="stylesheet" href="{{basis}}assets/css/avrg.css?v={{version}}">
 <link rel="stylesheet" href="{{basis}}assets/css/avrg-v3.css?v={{version}}">
 </head>
 <body>
@@ -37,7 +37,7 @@
 
 <main id="top">
 
-<section class="v3-held"><div class="wrap">
+<section class="v3-held" id="start"><div class="wrap">
   <div>
     <p class="v3-kicker">Die neue Altersvorsorge ab 2027</p>
     <h1>Mitnehmen oder abhaken.</h1>
@@ -235,7 +235,7 @@
   </div>
 </div></section>
 
-<section class="v3-sek v3-sek--rot v3-schluss"><div class="wrap">
+<section class="v3-sek v3-sek--rot v3-schluss" id="schluss"><div class="wrap">
   <h2 class="v3-h2">Mitnehmen oder abhaken?</h2>
   <p class="v3-lead" style="margin-left:auto;margin-right:auto">In 30 Minuten weißt du es.</p>
   <div class="v3-knoepfe"><a class="knopf knopf--weiss" href="#termin">Ticket einlösen</a></div>
@@ -359,5 +359,6 @@
   });
 })();
 </script>
+<script src="{{basis}}assets/js/tracking.js?v={{version}}" defer></script>
 </body>
 </html>

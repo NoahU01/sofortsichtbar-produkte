@@ -71,6 +71,7 @@ Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.
 - `node scripts/avrg.mjs` – schreibt `avrg/` außer `assets/` neu (Ausgabe wird committet, wie die Musterseiten)
 - Sitemap je Kunde (`/<kunde>/sitemap.xml`, für eine eigene Search-Console-Property nur dieses Kunden), dazu Sitemap-Index und `robots.txt` für die Subdomain.
 - Der `X-Robots-Tag: noindex` aus `vercel.json` gilt für alle Hosts außer `avrg.sofortsichtbar.de`; unter `/avrg/` auf der Vercel-Domain bleiben die Seiten noindex (keine Dubletten).
+- Tracking je Kunde in `kunde.json` → `gemeinsam.tracking` (`ga4`, `cookiebot`): Consent Mode v2 (Standard abgelehnt), Cookiebot falls ID gesetzt, Markierung für internen Traffic (`?internal=1`), GA4 nur auf `avrg.sofortsichtbar.de`. Ereignisse in `avrg/assets/js/tracking.js`: `ticket_klick`, `termin_klick` (Conversion), `telefon_klick`, `mail_klick`, `rechner_genutzt`, `section_view_<id>`, `section_time_<id>` (Sekunden als `value`). Person/Kunde ergeben sich aus dem Seitenpfad.
 - `redirects` in `vercel.json`: die Pfade vom 25./26.10.2026 ohne Kundenordner (`/hild/` usw.) leiten auf `/sv-owen/…` weiter.
 
 **Neuer Kunde:** Ordner `scripts/avrg/kunden/<kunde>/` (Kopie von `sv-owen`), Fotos nach `avrg/assets/bilder/<kunde>/`, `node scripts/avrg.mjs`. Noch fest in der Vorlage und dann als Platzhalter nachzuziehen: SV-Owen-Logo, Adresse „Kirchheimer Straße 22“, „Büro in Owen“. Die Weiterleitung von `/` in `middleware.js` (`start`) dann auf eine neutrale Seite ändern.

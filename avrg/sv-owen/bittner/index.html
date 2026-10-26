@@ -12,8 +12,60 @@
 <meta property="og:title" content="Neue Altersvorsorge 2027 · Tim Bittner | SV Owen">
 <meta property="og:description" content="Neue geförderte Altersvorsorge ab 2027: In 30 Minuten weißt du, ob du etwas davon hast. Kostenlos – am Telefon, per Video oder im Büro in Owen.">
 <meta property="og:url" content="https://avrg.sofortsichtbar.de/sv-owen/bittner/">
-<link rel="stylesheet" href="../../assets/css/avrg.css?v=d02da4c5">
-<link rel="stylesheet" href="../../assets/css/avrg-v3.css?v=d02da4c5">
+<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  // Vor jeder Auswahl gilt: nichts erlaubt außer dem technisch Nötigen.
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'denied',
+    personalization_storage: 'denied', security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+<script data-cookieconsent="ignore">
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('am_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('am_internal'); schalter = 'aus'; }
+    } catch (e) {}
+    var intern = false;
+    try { intern = localStorage.getItem('am_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an' ? 'Dieses Gerät zählt ab jetzt als interner Traffic' : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;background:#0d1420;color:#fff;border-radius:14px;padding:10px 18px;font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+<script data-cookieconsent="ignore">
+  // dataLayer und gtag stammen aus dem Consent-Block oben und werden bewusst
+  // nicht neu angelegt – sonst wäre der gesetzte Standard wieder weg.
+  if (location.hostname === 'avrg.sofortsichtbar.de') {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=G-9PG9S726BT';
+    document.head.appendChild(ga);
+    gtag('js', new Date());
+    gtag('config', 'G-9PG9S726BT');
+  }
+</script>
+<link rel="stylesheet" href="../../assets/css/avrg.css?v=90cedc84">
+<link rel="stylesheet" href="../../assets/css/avrg-v3.css?v=90cedc84">
 </head>
 <body>
 <svg width="0" height="0" style="position:absolute" aria-hidden="true"><defs>
@@ -37,7 +89,7 @@
 
 <main id="top">
 
-<section class="v3-held"><div class="wrap">
+<section class="v3-held" id="start"><div class="wrap">
   <div>
     <p class="v3-kicker">Die neue Altersvorsorge ab 2027</p>
     <h1>Mitnehmen oder abhaken.</h1>
@@ -235,7 +287,7 @@
   </div>
 </div></section>
 
-<section class="v3-sek v3-sek--rot v3-schluss"><div class="wrap">
+<section class="v3-sek v3-sek--rot v3-schluss" id="schluss"><div class="wrap">
   <h2 class="v3-h2">Mitnehmen oder abhaken?</h2>
   <p class="v3-lead" style="margin-left:auto;margin-right:auto">In 30 Minuten weißt du es.</p>
   <div class="v3-knoepfe"><a class="knopf knopf--weiss" href="#termin">Ticket einlösen</a></div>
@@ -359,5 +411,6 @@
   });
 })();
 </script>
+<script src="../../assets/js/tracking.js?v=90cedc84" defer></script>
 </body>
 </html>

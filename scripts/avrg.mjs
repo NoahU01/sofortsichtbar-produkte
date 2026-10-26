@@ -14,10 +14,77 @@ const ZIEL = path.join(ROOT, 'avrg');
 const QUELLE = path.join(ROOT, 'scripts/avrg');
 const vorlage = await readFile(path.join(QUELLE, 'vorlage.html'), 'utf8');
 
-// CSS-Version aus dem Inhalt: Änderung an den Stylesheets → neue ?v=, kein Cache-Problem
+// Version aus dem Inhalt von CSS und JS: Änderung → neue ?v=, kein Cache-Problem
 const hash = createHash('sha1');
-for (const f of ['avrg.css', 'avrg-v3.css']) hash.update(await readFile(path.join(ZIEL, 'assets/css', f)));
+for (const f of ['css/avrg.css', 'css/avrg-v3.css', 'js/tracking.js']) hash.update(await readFile(path.join(ZIEL, 'assets', f)));
 const version = hash.digest('hex').slice(0, 8);
+
+// Interner Traffic: Baustein aus dem AdMemory-Playbook (tracking-seo-setup/interner-traffic.html),
+// markiert den Browser per ?internal=1 statt über IP-Regeln
+const internerTraffic = `<script data-cookieconsent="ignore">
+  (function () {
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    var schalter = null;
+    try {
+      var wert = new URLSearchParams(location.search).get('internal');
+      if (wert === '1') { localStorage.setItem('am_internal', '1'); schalter = 'an'; }
+      if (wert === '0') { localStorage.removeItem('am_internal'); schalter = 'aus'; }
+    } catch (e) {}
+    var intern = false;
+    try { intern = localStorage.getItem('am_internal') === '1'; } catch (e) {}
+    if (intern) gtag('set', { traffic_type: 'internal' });
+    if (schalter) {
+      var zeigen = function () {
+        var el = document.createElement('div');
+        el.textContent = schalter === 'an' ? 'Dieses Gerät zählt ab jetzt als interner Traffic' : 'Markierung entfernt – dieses Gerät zählt wieder mit';
+        el.setAttribute('role', 'status');
+        el.style.cssText = 'position:fixed;left:50%;bottom:20px;transform:translateX(-50%);z-index:9999;background:#0d1420;color:#fff;border-radius:14px;padding:10px 18px;font:13px/1.35 system-ui,sans-serif;max-width:90vw;text-align:center;box-shadow:0 6px 24px rgba(0,0,0,.25)';
+        document.body.appendChild(el);
+        setTimeout(function () { el.style.transition = 'opacity .4s'; el.style.opacity = '0'; }, 4000);
+        setTimeout(function () { el.remove(); }, 4600);
+      };
+      if (document.body) zeigen(); else document.addEventListener('DOMContentLoaded', zeigen);
+    }
+  })();
+</script>
+`;
+
+/** Consent Mode v2 (Standard: abgelehnt) → Cookiebot (falls ID) → interner Traffic → GA4.
+    GA4 lädt nur auf der echten Domain, nicht auf der Vercel-Vorschau und nicht lokal.
+    Reihenfolge wie auf sofortsichtbar.de (src/_includes/partials/head-scripts.njk). */
+function trackingKopf(t) {
+  if (!t || !t.ga4) return '';
+  if (!/^G-[A-Z0-9]+$/.test(t.ga4)) throw new Error(`GA4-ID ungültig: ${t.ga4}`);
+  const cookiebot = t.cookiebot ? `<script id="Cookiebot" src="https://consent.cookiebot.com/uc.js" data-cbid="${esc(t.cookiebot)}" data-blockingmode="auto" data-culture="de" type="text/javascript"></script>
+` : '';
+  return `<script data-cookieconsent="ignore">
+  window.dataLayer = window.dataLayer || [];
+  function gtag() { dataLayer.push(arguments); }
+  // Vor jeder Auswahl gilt: nichts erlaubt außer dem technisch Nötigen.
+  gtag('consent', 'default', {
+    ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied',
+    analytics_storage: 'denied', functionality_storage: 'denied',
+    personalization_storage: 'denied', security_storage: 'granted',
+    wait_for_update: 500
+  });
+  gtag('set', 'ads_data_redaction', true);
+  gtag('set', 'url_passthrough', true);
+</script>
+${cookiebot}${internerTraffic}<script data-cookieconsent="ignore">
+  // dataLayer und gtag stammen aus dem Consent-Block oben und werden bewusst
+  // nicht neu angelegt – sonst wäre der gesetzte Standard wieder weg.
+  if (location.hostname === '${DOMAIN}') {
+    var ga = document.createElement('script');
+    ga.async = true;
+    ga.src = 'https://www.googletagmanager.com/gtag/js?id=${t.ga4}';
+    document.head.appendChild(ga);
+    gtag('js', new Date());
+    gtag('config', '${t.ga4}');
+  }
+</script>
+`;
+}
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const heute = new Date().toISOString().slice(0, 10);
@@ -107,6 +174,7 @@ for (const kunde of (await readdir(path.join(QUELLE, 'kunden'))).filter((k) => !
     const html = vorlage.replace(/\{\{(\w+)\}\}/g, (_, k) => {
       if (k === 'robots') return gemeinsam.indexieren ? `<link rel="canonical" href="${url}">` : '<meta name="robots" content="noindex, nofollow">';
       if (k === 'jsonld') return istStart ? jsonld : '';
+      if (k === 'tracking') return trackingKopf(gemeinsam.tracking);
       if (werte[k] == null || typeof werte[k] === 'object') throw new Error(`${kunde}/${v.slug}: Wert „${k}“ fehlt`);
       return esc(werte[k]);
     });

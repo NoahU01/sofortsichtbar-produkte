@@ -20,7 +20,11 @@
       ]
     },
     "logo": "sv-owen-logo.svg",
-    "marke": "SV Owen"
+    "marke": "SV Owen",
+    "tracking": {
+      "ga4": "G-9PG9S726BT",
+      "cookiebot": null
+    }
   },
   "varianten": [
     {
