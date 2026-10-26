@@ -49,28 +49,31 @@ Was das Klonen ändert: Landingi-Statistik, Tag-Manager, Popups, Lightbox und Bl
 
 ## Kundenseiten
 
-### AVRG · SV Owen (avrg.sofortsichtbar.de)
+### AVRG (avrg.sofortsichtbar.de)
 
-Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.html` aus dem Repo `avrg`, von Daniel), in sieben Varianten:
+Landingpage „Neue Altersvorsorge 2027“ (Basis: `projekte/avrg-landingpage-3.html` aus dem Repo `avrg`, von Daniel). Ein Ordner je Kunde, darunter je Mitarbeiter eine Seite (Pfad = Nachname):
 
-| avrg.sofortsichtbar.de | Variante | Termin-Link |
+| avrg.sofortsichtbar.de | Seite | Termin-Link |
 |---|---|---|
-| `/sv-owen/` (auch `/` leitet hierhin) | Allgemein (Agenturbild) | Team-Kalender „Alle AD Mitarbeiter“ |
-| `/schmid-raichle/` | Sibylle Schmid-Raichle | eigener Kalender |
-| `/precker/` | Thorsten Precker | eigener Kalender |
-| `/maier/` | Britta Maier | eigener Kalender |
-| `/hild/` | Sandra Hild | eigener Kalender |
-| `/bittner/` | Tim Bittner | eigener Kalender |
-| `/koch/` | Luis Koch | Team-Kalender (kein eigener) |
+| `/sv-owen/` (auch `/` leitet vorerst hierhin) | SV Owen allgemein (Agenturbild) | Team-Kalender „Alle AD Mitarbeiter“ |
+| `/sv-owen/schmid-raichle/` | Sibylle Schmid-Raichle | eigener Kalender |
+| `/sv-owen/precker/` | Thorsten Precker | eigener Kalender |
+| `/sv-owen/maier/` | Britta Maier | eigener Kalender |
+| `/sv-owen/hild/` | Sandra Hild | eigener Kalender |
+| `/sv-owen/bittner/` | Tim Bittner | eigener Kalender |
+| `/sv-owen/koch/` | Luis Koch | Team-Kalender (kein eigener) |
+| `/sv-owen/impressum/`, `/sv-owen/datenschutz/` | Rechtstexte des Kunden | |
 
 - `scripts/avrg/vorlage.html` – Daniels Seite, personenbezogene Stellen als `{{platzhalter}}`
-- `scripts/avrg/varianten.json` – Name, Foto, Termin-Link, Telefon, Mail je Variante
-- `node scripts/avrg.mjs` – schreibt `avrg/` neu (Ausgabe wird committet, wie die Musterseiten)
-- `scripts/avrg/rechtstexte/` – Impressum und Datenschutz (Quelle: öffentlicher-dienst-exklusiv.de, angepasst auf Vercel). `<!-- TRACKING:… -->` markiert, wo die Abschnitte zu Analytics und Cookie-Banner hingehören.
-- Indexierung: `gemeinsam.indexieren` in `varianten.json` (Canonical je Seite, `robots.txt`, `sitemap.xml`). Der `X-Robots-Tag: noindex` aus `vercel.json` gilt für alle Hosts außer `avrg.sofortsichtbar.de`; unter `/avrg/` auf der Vercel-Domain bleiben die Seiten also noindex (keine Dubletten).
-- `avrg/assets/` – CSS, Schriften (selbst gehostet), Bilder. Alle Pfade relativ, damit die Seiten unter `/avrg/…` und auf der Subdomain gleich funktionieren.
+- `scripts/avrg/kunden/<kunde>/kunde.json` – Marke, Firmendaten (JSON-LD), je Mitarbeiter Name, Foto, Termin-Link, Telefon, Mail
+- `scripts/avrg/kunden/<kunde>/impressum.html`, `datenschutz.html` – Rechtstexte (SV Owen: Quelle öffentlicher-dienst-exklusiv.de, Hosting auf Vercel angepasst; `<!-- TRACKING:… -->` markiert, wo Analytics und Cookie-Banner hingehören)
+- `avrg/assets/bilder/<kunde>/` – Fotos des Kunden; CSS und Schriften (selbst gehostet) gemeinsam in `avrg/assets/`
+- `node scripts/avrg.mjs` – schreibt `avrg/` außer `assets/` neu (Ausgabe wird committet, wie die Musterseiten)
+- Sitemap je Kunde (`/<kunde>/sitemap.xml`, für eine eigene Search-Console-Property nur dieses Kunden), dazu Sitemap-Index und `robots.txt` für die Subdomain.
+- Der `X-Robots-Tag: noindex` aus `vercel.json` gilt für alle Hosts außer `avrg.sofortsichtbar.de`; unter `/avrg/` auf der Vercel-Domain bleiben die Seiten noindex (keine Dubletten).
+- `redirects` in `vercel.json`: die Pfade vom 25./26.10.2026 ohne Kundenordner (`/hild/` usw.) leiten auf `/sv-owen/…` weiter.
 
-Änderungen aus dem `avrg`-Repo: Diff von `projekte/avrg-landingpage-3.html` in `scripts/avrg/vorlage.html` übertragen (Platzhalter stehen lassen), CSS nach `avrg/assets/css/`, dann `node scripts/avrg.mjs`.
+**Neuer Kunde:** Ordner `scripts/avrg/kunden/<kunde>/` (Kopie von `sv-owen`), Fotos nach `avrg/assets/bilder/<kunde>/`, `node scripts/avrg.mjs`. Noch fest in der Vorlage und dann als Platzhalter nachzuziehen: SV-Owen-Logo, Adresse „Kirchheimer Straße 22“, „Büro in Owen“. Die Weiterleitung von `/` in `middleware.js` (`start`) dann auf eine neutrale Seite ändern.
 
 ### Subdomains
 

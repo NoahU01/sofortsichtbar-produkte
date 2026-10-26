@@ -1,5 +1,5 @@
 // Subdomains von sofortsichtbar.de auf einen Ordner in diesem Repo legen:
-// avrg.sofortsichtbar.de/hild/ zeigt avrg/hild/index.html.
+// avrg.sofortsichtbar.de/sv-owen/hild/ zeigt avrg/sv-owen/hild/index.html.
 // Middleware statt Rewrite in vercel.json, weil Rewrites erst greifen, wenn unter dem Pfad
 // keine Datei liegt – die Subdomain würde sonst Dateien aus dem ganzen Repo ausliefern.
 // start = wohin die nackte Domain weiterleitet (307, damit sie sich später noch ändern lässt).

@@ -1,14 +1,30 @@
 {
-  "_hinweis": "Eine Zeile je Landingpage. slug = Pfad unter der Domain (Nachname, allgemein = sv-owen; die nackte Domain leitet auf sv-owen weiter). voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
+  "_hinweis": "Ein Kunde = ein Ordner unter avrg.sofortsichtbar.de/<kunde>/ (Ordnername dieses Verzeichnisses). slug \"\" = allgemeine Seite des Kunden, sonst Nachname → /<kunde>/<nachname>/. foto liegt in avrg/assets/bilder/<kunde>/. voreinstellung = was im SV-Kalender beim Öffnen vorausgewählt ist (je Kalender geprüft am 25.10.2026). Nach Änderung: node scripts/avrg.mjs",
   "gemeinsam": {
-    "domain": "avrg.sofortsichtbar.de",
     "indexieren": true,
-    "start": "sv-owen",
-    "beschreibung": "Neue geförderte Altersvorsorge ab 2027: In 30 Minuten weißt du, ob du etwas davon hast. Kostenlos – am Telefon, per Video oder im Büro in Owen."
+    "beschreibung": "Neue geförderte Altersvorsorge ab 2027: In 30 Minuten weißt du, ob du etwas davon hast. Kostenlos – am Telefon, per Video oder im Büro in Owen.",
+    "organisation": {
+      "@type": "InsuranceAgency",
+      "name": "SV SparkassenVersicherung Gebietsdirektion Owen – Schmid-Raichle · Precker GbR",
+      "telephone": "+49 7021 98080-0",
+      "email": "service@sv-owen.de",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "Kirchheimer Str. 22",
+        "postalCode": "73277",
+        "addressLocality": "Owen",
+        "addressCountry": "DE"
+      },
+      "sameAs": [
+        "https://www.sparkassenversicherung.de/sv-owen"
+      ]
+    },
+    "logo": "sv-owen-logo.svg",
+    "marke": "SV Owen"
   },
   "varianten": [
     {
-      "slug": "sv-owen",
+      "slug": "",
       "name": "Gebietsdirektion Owen",
       "foto": "agentur.jpg",
       "buchungTitel": "Termin direkt online buchen",
@@ -21,7 +37,7 @@
     {
       "slug": "schmid-raichle",
       "name": "Sibylle Schmid-Raichle",
-      "foto": "sibylle.jpg",
+      "foto": "schmid-raichle.jpg",
       "buchungTitel": "Termin direkt bei Sibylle buchen",
       "direktTitel": "Oder rufe Sibylle gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/2d4ef0c7-8b7f-4a47-94e6-e746ac039d1c",
@@ -32,7 +48,7 @@
     {
       "slug": "precker",
       "name": "Thorsten Precker",
-      "foto": "thorsten.jpg",
+      "foto": "precker.jpg",
       "buchungTitel": "Termin direkt bei Thorsten buchen",
       "direktTitel": "Oder rufe Thorsten gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/00ead5cb-47a8-41d0-abca-56d202f455af",
@@ -43,7 +59,7 @@
     {
       "slug": "maier",
       "name": "Britta Maier",
-      "foto": "britta.jpg",
+      "foto": "maier.jpg",
       "buchungTitel": "Termin direkt bei Britta buchen",
       "direktTitel": "Oder rufe Britta gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/b1864480-257e-4926-9365-d798cd1cfea4",
@@ -54,7 +70,7 @@
     {
       "slug": "hild",
       "name": "Sandra Hild",
-      "foto": "sandra.jpg",
+      "foto": "hild.jpg",
       "buchungTitel": "Termin direkt bei Sandra buchen",
       "direktTitel": "Oder rufe Sandra gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/c9781fd4-973b-4709-95c1-4e563d398b46",
@@ -65,7 +81,7 @@
     {
       "slug": "bittner",
       "name": "Tim Bittner",
-      "foto": "tim.jpg",
+      "foto": "bittner.jpg",
       "buchungTitel": "Termin direkt bei Tim buchen",
       "direktTitel": "Oder rufe Tim gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/e8881023-fd37-42a4-94d5-24b5a49f2884",
@@ -77,7 +93,7 @@
       "slug": "koch",
       "_offen": "Luis hat keinen eigenen SV-Kalender (nicht in der Mein-Termin-Vorlage, nicht auf sv-owen). Bis zur Klärung: Team-Kalender mit Mitarbeiterauswahl.",
       "name": "Luis Koch",
-      "foto": "luis.jpg",
+      "foto": "koch.jpg",
       "buchungTitel": "Termin online buchen",
       "direktTitel": "Oder rufe Luis gerne direkt an:",
       "termin": "https://meinsvtermin.sparkassenversicherung.de/appointment/SVOwen/795d5755-c495-426d-a732-05e7c54f6a70",

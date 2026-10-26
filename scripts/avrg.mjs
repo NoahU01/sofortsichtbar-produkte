@@ -1,15 +1,17 @@
-// Erzeugt die AVRG-Landingpages (SV Owen) in avrg/: eine Seite je Variante aus
-// scripts/avrg/vorlage.html + scripts/avrg/varianten.json, dazu Impressum, Datenschutz
-// (scripts/avrg/rechtstexte/), robots.txt und sitemap.xml. Ausgabe wird committet (kein Build auf Vercel).
+// Erzeugt die AVRG-Landingpages in avrg/ – ein Ordner je Kunde (avrg.sofortsichtbar.de/<kunde>/),
+// darin die allgemeine Seite, je Mitarbeiter eine Seite (/<kunde>/<nachname>/), Impressum,
+// Datenschutz und eine eigene Sitemap. Quelle: scripts/avrg/vorlage.html + scripts/avrg/kunden/<kunde>/.
+// Ausgabe wird committet (kein Build auf Vercel).
 //   node scripts/avrg.mjs
 import { readFile, writeFile, mkdir, rm, readdir } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import path from 'node:path';
 
+const DOMAIN = 'avrg.sofortsichtbar.de';
+const BASIS_URL = `https://${DOMAIN}/`;
 const ROOT = path.resolve(import.meta.dirname, '..');
 const ZIEL = path.join(ROOT, 'avrg');
 const QUELLE = path.join(ROOT, 'scripts/avrg');
-const daten = JSON.parse(await readFile(path.join(QUELLE, 'varianten.json'), 'utf8'));
 const vorlage = await readFile(path.join(QUELLE, 'vorlage.html'), 'utf8');
 
 // CSS-Version aus dem Inhalt: Änderung an den Stylesheets → neue ?v=, kein Cache-Problem
@@ -18,76 +20,37 @@ for (const f of ['avrg.css', 'avrg-v3.css']) hash.update(await readFile(path.joi
 const version = hash.digest('hex').slice(0, 8);
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
-const { gemeinsam } = daten;
-const BASIS_URL = `https://${gemeinsam.domain}/`;
-const robotsTag = (url) => gemeinsam.indexieren
-  ? `<link rel="canonical" href="${url}">`
-  : '<meta name="robots" content="noindex, nofollow">';
+const heute = new Date().toISOString().slice(0, 10);
 
-// Strukturierte Daten nur auf der allgemeinen Seite, sonst doppelt über alle Varianten
-const agentur = {
-  '@context': 'https://schema.org',
-  '@type': 'InsuranceAgency',
-  name: 'SV SparkassenVersicherung Gebietsdirektion Owen – Schmid-Raichle · Precker GbR',
-  url: BASIS_URL + gemeinsam.start + '/',
-  logo: BASIS_URL + 'assets/bilder/sv-owen-logo.svg',
-  telephone: '+49 7021 98080-0',
-  email: 'service@sv-owen.de',
-  address: { '@type': 'PostalAddress', streetAddress: 'Kirchheimer Str. 22', postalCode: '73277', addressLocality: 'Owen', addressCountry: 'DE' },
-  sameAs: ['https://www.sparkassenversicherung.de/sv-owen'],
-};
-const jsonld = `<script type="application/ld+json">${JSON.stringify(agentur)}</script>\n`;
-
-// Alles außer assets/ neu schreiben – auch umbenannte oder entfernte Varianten verschwinden
+// Alles außer assets/ neu schreiben – auch umbenannte oder entfernte Seiten verschwinden
 for (const eintrag of await readdir(ZIEL)) {
   if (eintrag !== 'assets') await rm(path.join(ZIEL, eintrag), { recursive: true, force: true });
 }
 
-async function schreibe(slug, html) {
-  await mkdir(path.join(ZIEL, slug), { recursive: true });
-  await writeFile(path.join(ZIEL, slug, 'index.html'), html);
+async function schreibe(relPfad, inhalt) {
+  const datei = path.join(ZIEL, relPfad);
+  await mkdir(path.dirname(datei), { recursive: true });
+  await writeFile(datei, inhalt);
 }
 
-const sitemap = [];
-const slugs = new Set();
-for (const v of daten.varianten) {
-  if (!v.slug || slugs.has(v.slug)) throw new Error(`Slug leer oder doppelt: "${v.slug}"`);
-  slugs.add(v.slug);
+const sitemapXml = (eintraege) => `<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${eintraege.map((s) => `  <url><loc>${s.url}</loc><lastmod>${heute}</lastmod><priority>${s.prio}</priority></url>`).join('\n')}
+</urlset>
+`;
 
-  const istStart = v.slug === gemeinsam.start;
-  const url = `${BASIS_URL}${v.slug}/`;
-  const werte = {
-    ...gemeinsam, ...v, version, url, basis: '../',
-    titel: istStart ? 'Neue Altersvorsorge 2027 · Klarheits-Ticket | SV Owen' : `Neue Altersvorsorge 2027 · ${v.name} | SV Owen`,
-    telefonLink: v.telefon.replace(/[^\d+]/g, ''),
-  };
-
-  const html = vorlage.replace(/\{\{(\w+)\}\}/g, (_, k) => {
-    if (k === 'robots') return robotsTag(url);
-    if (k === 'jsonld') return istStart ? jsonld : '';
-    if (werte[k] == null) throw new Error(`${v.slug}: Wert „${k}“ fehlt`);
-    return esc(werte[k]);
-  });
-
-  await schreibe(v.slug, html);
-  sitemap.push({ url, prio: istStart ? '1.0' : '0.8' });
-  console.log(`${url.padEnd(46)} ${v.name}`);
-}
-
-// Rechtsseiten: Text aus rechtstexte/, Rahmen aus Kopf und Fuß der Landingpage
-for (const slug of ['impressum', 'datenschutz']) {
-  const text = await readFile(path.join(QUELLE, 'rechtstexte', `${slug}.html`), 'utf8');
+function rechtsseite(gemeinsam, text, url) {
   const titel = text.match(/<!-- titel: (.+?) -->/)[1];
-  const url = `${BASIS_URL}${slug}/`;
-  const html = `<!doctype html>
+  const robots = gemeinsam.indexieren ? `<link rel="canonical" href="${url}">` : '<meta name="robots" content="noindex, nofollow">';
+  return `<!doctype html>
 <html lang="de">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>${esc(titel)} | SV Owen</title>
-${robotsTag(url)}
-<link rel="stylesheet" href="../assets/css/avrg.css?v=${version}">
-<link rel="stylesheet" href="../assets/css/avrg-v3.css?v=${version}">
+<title>${esc(titel)} | ${esc(gemeinsam.marke)}</title>
+${robots}
+<link rel="stylesheet" href="../../assets/css/avrg.css?v=${version}">
+<link rel="stylesheet" href="../../assets/css/avrg-v3.css?v=${version}">
 <style>
 .recht{padding-block:clamp(40px,6vw,80px);overflow-wrap:anywhere}
 .recht>*{max-width:46rem}
@@ -102,27 +65,76 @@ ${robotsTag(url)}
 </head>
 <body>
 <header class="kopf"><div class="wrap">
-  <a class="logo" href="../${gemeinsam.start}/"><img src="../assets/bilder/sv-owen-logo.svg" alt="SV Owen"></a>
+  <a class="logo" href="../"><img src="../../assets/bilder/${gemeinsam.logo}" alt="${esc(gemeinsam.marke)}"></a>
 </div></header>
 <main class="wrap recht">
 ${text.replace(/<!--[\s\S]*?-->\n?/g, '').trim()}
 </main>
-<footer class="fuss"><div class="wrap"><img src="../assets/bilder/sv-owen-logo.svg" alt="SV Owen"><nav><a href="../impressum/">Impressum</a><a href="../datenschutz/">Datenschutz</a></nav></div></footer>
+<footer class="fuss"><div class="wrap"><img src="../../assets/bilder/${gemeinsam.logo}" alt="${esc(gemeinsam.marke)}"><nav><a href="../impressum/">Impressum</a><a href="../datenschutz/">Datenschutz</a></nav></div></footer>
 </body>
 </html>
 `;
-  await schreibe(slug, html);
-  sitemap.push({ url, prio: '0.3' });
-  console.log(`${url.padEnd(46)} ${titel}`);
 }
 
-const heute = new Date().toISOString().slice(0, 10);
-await writeFile(path.join(ZIEL, 'sitemap.xml'), `<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-${sitemap.map((s) => `  <url><loc>${s.url}</loc><lastmod>${heute}</lastmod><priority>${s.prio}</priority></url>`).join('\n')}
-</urlset>
+const kundenSitemaps = [];
+for (const kunde of (await readdir(path.join(QUELLE, 'kunden'))).filter((k) => !k.startsWith('.'))) {
+  const ordner = path.join(QUELLE, 'kunden', kunde);
+  const { gemeinsam, varianten } = JSON.parse(await readFile(path.join(ordner, 'kunde.json'), 'utf8'));
+  const kundeUrl = `${BASIS_URL}${kunde}/`;
+  const sitemap = [];
+
+  // Strukturierte Daten nur auf der allgemeinen Seite des Kunden, sonst doppelt über alle Varianten
+  const jsonld = gemeinsam.organisation
+    ? `<script type="application/ld+json">${JSON.stringify({ '@context': 'https://schema.org', ...gemeinsam.organisation, url: kundeUrl, logo: `${BASIS_URL}assets/bilder/${gemeinsam.logo}` })}</script>\n`
+    : '';
+
+  const slugs = new Set();
+  for (const v of varianten) {
+    if (slugs.has(v.slug)) throw new Error(`${kunde}: Slug doppelt: "${v.slug}"`);
+    slugs.add(v.slug);
+
+    const istStart = v.slug === '';
+    const url = istStart ? kundeUrl : `${kundeUrl}${v.slug}/`;
+    // Relative Pfade: gleiche Seite funktioniert unter /avrg/… auf der Vercel-Domain und auf der Subdomain
+    const werte = {
+      ...gemeinsam, ...v, kunde, version, url,
+      basis: istStart ? '../' : '../../',
+      kundeBasis: istStart ? '' : '../',
+      titel: istStart ? `Neue Altersvorsorge 2027 · Klarheits-Ticket | ${gemeinsam.marke}` : `Neue Altersvorsorge 2027 · ${v.name} | ${gemeinsam.marke}`,
+      telefonLink: v.telefon.replace(/[^\d+]/g, ''),
+    };
+
+    const html = vorlage.replace(/\{\{(\w+)\}\}/g, (_, k) => {
+      if (k === 'robots') return gemeinsam.indexieren ? `<link rel="canonical" href="${url}">` : '<meta name="robots" content="noindex, nofollow">';
+      if (k === 'jsonld') return istStart ? jsonld : '';
+      if (werte[k] == null || typeof werte[k] === 'object') throw new Error(`${kunde}/${v.slug}: Wert „${k}“ fehlt`);
+      return esc(werte[k]);
+    });
+
+    await schreibe(path.join(kunde, v.slug, 'index.html'), html);
+    sitemap.push({ url, prio: istStart ? '1.0' : '0.8' });
+    console.log(`${url.padEnd(52)} ${v.name}`);
+  }
+
+  for (const seite of ['impressum', 'datenschutz']) {
+    const text = await readFile(path.join(ordner, `${seite}.html`), 'utf8');
+    const url = `${kundeUrl}${seite}/`;
+    await schreibe(path.join(kunde, seite, 'index.html'), rechtsseite(gemeinsam, text, url));
+    sitemap.push({ url, prio: '0.3' });
+    console.log(`${url.padEnd(52)} ${seite}`);
+  }
+
+  // Eigene Sitemap je Kunde: lässt sich in einer Search-Console-Property nur für /<kunde>/ einreichen
+  await schreibe(path.join(kunde, 'sitemap.xml'), sitemapXml(sitemap));
+  if (gemeinsam.indexieren) kundenSitemaps.push(`${kundeUrl}sitemap.xml`);
+  console.log(`${(kundeUrl + 'sitemap.xml').padEnd(52)} ${sitemap.length} Adressen`);
+}
+
+// Sitemap-Index und robots.txt für die ganze Subdomain
+await schreibe('sitemap.xml', `<?xml version="1.0" encoding="UTF-8"?>
+<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+${kundenSitemaps.map((u) => `  <sitemap><loc>${u}</loc><lastmod>${heute}</lastmod></sitemap>`).join('\n')}
+</sitemapindex>
 `);
-await writeFile(path.join(ZIEL, 'robots.txt'), gemeinsam.indexieren
-  ? `User-agent: *\nAllow: /\n\nSitemap: ${BASIS_URL}sitemap.xml\n`
-  : 'User-agent: *\nDisallow: /\n');
-console.log(`${BASIS_URL}sitemap.xml (${sitemap.length} Adressen), robots.txt`);
+await schreibe('robots.txt', `User-agent: *\nAllow: /\n\nSitemap: ${BASIS_URL}sitemap.xml\n`);
+console.log(`${BASIS_URL}sitemap.xml (Index über ${kundenSitemaps.length} Kunden), robots.txt`);

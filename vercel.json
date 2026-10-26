@@ -26,5 +26,95 @@
         }
       ]
     }
+  ],
+  "redirects": [
+    {
+      "source": "/schmid-raichle/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/schmid-raichle/",
+      "permanent": true
+    },
+    {
+      "source": "/precker/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/precker/",
+      "permanent": true
+    },
+    {
+      "source": "/maier/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/maier/",
+      "permanent": true
+    },
+    {
+      "source": "/hild/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/hild/",
+      "permanent": true
+    },
+    {
+      "source": "/bittner/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/bittner/",
+      "permanent": true
+    },
+    {
+      "source": "/koch/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/koch/",
+      "permanent": true
+    },
+    {
+      "source": "/impressum/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/impressum/",
+      "permanent": true
+    },
+    {
+      "source": "/datenschutz/",
+      "has": [
+        {
+          "type": "host",
+          "value": "avrg.sofortsichtbar.de"
+        }
+      ],
+      "destination": "/sv-owen/datenschutz/",
+      "permanent": true
+    }
   ]
 }
